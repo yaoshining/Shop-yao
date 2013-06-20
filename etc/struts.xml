@@ -1,0 +1,10 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="pkg1" namespace="/" extends="json-default">
+		<action name="test" class="testAction">
+			<result>/test.jsp</result>
+		</action>
+	</package>
+</struts>

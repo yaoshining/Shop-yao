@@ -1,0 +1,9 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://struts.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="designer" extends="mainLayout">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/designer/test.jsp"/>
+	</definition>
+	<definition name="canvas" extends="mainLayout">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/designer/canvas.jsp"/>
+	</definition>
+</tiles-definitions>

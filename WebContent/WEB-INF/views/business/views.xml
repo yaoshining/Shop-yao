@@ -1,0 +1,9 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://struts.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="chooseUser" extends="mainLayout">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/business/chooseUser.jsp"/>
+	</definition>
+	<definition name="chooseGroup" extends="mainLayout">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/business/chooseGroup.jsp"/>
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,5 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://struts.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="mainLayout" template="/WEB-INF/views/main_template.jsp">
+	</definition>
+</tiles-definitions>

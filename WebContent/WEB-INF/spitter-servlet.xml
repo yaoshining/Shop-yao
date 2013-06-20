@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/designer/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean> -->
+	<!-- <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location" value="/WEB-INF/xmlViews.xml"></property> 
+      	<property name="order" value="1"></property> 
+	</bean>-->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1" />
+        <property name="favorParameter" value="false" />
+        <property name="ignoreAcceptHeader" value="true" />
+        <property name="mediaTypes">
+            <map>
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="text/xml" />        
+                <entry key="htm" value="text/html" />  
+            </map>
+        </property>
+        <property name="defaultContentType" value="text/html" />
+        <property name="viewResolvers">
+        	<list>
+        	</list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"></bean>
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+                    <constructor-arg>
+                        <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+                             <property name="packagesToScan" value="com.yao">
+                             </property>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" />
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/views/**/views.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="messageConverters">
+	        <list>
+	            <bean
+	                class="com.yao.util.ConfigurableStringHttpMessageConverter">
+	                <property name="supportedMediaTypes">
+	                    <list>
+	                    	<bean class="org.springframework.http.MediaType">
+						      <constructor-arg index="0" value="text"/>
+						      <constructor-arg index="1" value="plain"/>
+						      <constructor-arg index="2" value="UTF-8"/>
+						    </bean>
+	                    	<bean class="org.springframework.http.MediaType">
+						      <constructor-arg index="0" value="application"/>
+						      <constructor-arg index="1" value="json"/>
+						      <constructor-arg index="2" value="UTF-8"/>
+						    </bean>
+	                    	<bean class="org.springframework.http.MediaType">
+						      <constructor-arg index="0" value="text"/>
+						      <constructor-arg index="1" value="html"/>
+						      <constructor-arg index="2" value="UTF-8"/>
+						    </bean>
+						    <bean class="org.springframework.http.MediaType">
+						      <constructor-arg index="0" value="*"/>
+						      <constructor-arg index="1" value="*"/>
+						      <constructor-arg index="2" value="UTF-8"/>
+						    </bean>
+	                    </list>
+	                </property>
+	            </bean>
+	        </list>
+	    </property>
+	</bean>
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	<context:component-scan base-package="com.yao"></context:component-scan>
+	<mvc:annotation-driven />
+</beans>
