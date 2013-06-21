@@ -11,6 +11,5 @@ public class DAOTest {
 	@PersistenceContext protected EntityManager em;
 	public void save(Object entity) {
 		em.persist(entity);
-		
 	}
 }
