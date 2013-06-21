@@ -5,16 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<%=request.getContextPath() %>/resources/css/yaml/core/base.css" rel="stylesheet" media="screen" />
-<link href="<%=request.getContextPath() %>/resources/css/yaml/forms/gray-theme.css" rel="stylesheet" media="screen" />
-<link href="<%=request.getContextPath() %>/resources/css/yaml/screen/typography.css" rel="stylesheet" media="screen" />
-<link href="<%=request.getContextPath() %>/resources/css/jquery/component/lightbox.css" rel="stylesheet" media="screen" />
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery/ui/jquery-ui.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery/utils/jquery-migrate-1.1.0.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery/component/lightbox-evolution.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/utils/json2.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/utils/JSUtils.js"></script>
 <script type="text/javascript">
 $(function(){
 });
