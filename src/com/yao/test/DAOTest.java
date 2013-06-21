@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class DAOTest {
 	@PersistenceContext protected EntityManager em;
 	public void save(Object entity) {
-		em.persist(entity);
+		em.persist(entity);  //Ò¦ÊÀÄşÌá½»
 	}
 }
