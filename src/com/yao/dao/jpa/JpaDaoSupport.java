@@ -44,10 +44,6 @@ public class JpaDaoSupport implements DAO {
 
 	@Override
 	public <T> void removeById(Class<T> entityClass, Object entityId) {
-//		if(entity.getClass().isArray()) {
-//			saveEntities((Object[])entity);
-//			return;
-//		}
 		em.remove(em.find(entityClass, entityId));
 	}
 
