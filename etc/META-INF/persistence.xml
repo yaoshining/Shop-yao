@@ -23,8 +23,12 @@
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-         <property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1" />  
+         <!-- <property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1" /> --> 
+         <property name="hibernate.cache.use_query_cache" value="true"/>
+         <property name="hibernate.cache.use_second_level_cache" value="true" />
+         <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.EhCacheRegionFactory"/>
          <property name="hibernate.max_fetch_depth" value="3"/>
+         <property name="hibernate.jdbc.batch_size " value="20"/>
          <property name="hibernate.jdbc.fetch_size" value="18"/>
          <property name="hibernate.jdbc.batch_size" value="10"/>
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
