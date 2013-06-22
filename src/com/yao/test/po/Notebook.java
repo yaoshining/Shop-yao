@@ -5,6 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,7 +19,8 @@ public class Notebook implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	/** 主键**/
-	@Column
+	@Id   //主键不能写column了
+	@GeneratedValue
 	private int id; 
 	
 	/** 品牌**/
@@ -35,9 +40,10 @@ public class Notebook implements Serializable{
 	/**价格**/
 	private double price;
 	
-	@Column(nullable=true)
 	/**操作系统**/
-	private String operating_system;
+	@Column(nullable=true)
+	@Enumerated(EnumType.STRING)
+	private OperatingSystem operating_system;
 
 	
 	public int getId() {
@@ -80,11 +86,11 @@ public class Notebook implements Serializable{
 		this.price = price;
 	}
 
-	public String getOperating_system() {
+	public OperatingSystem getOperating_system() {
 		return operating_system;
 	}
 
-	public void setOperating_system(String operating_system) {
+	public void setOperating_system(OperatingSystem operating_system) {
 		this.operating_system = operating_system;
 	}
 	
