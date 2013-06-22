@@ -25,6 +25,10 @@ public class Notebook implements Serializable{
 	
 	/** 品牌**/
 	@Column(nullable=true)
+	private String brand;
+
+	/** 尺寸**/
+	@Column(nullable=true)
 	private int size;
 	
 	@Column(nullable=true)
@@ -34,7 +38,7 @@ public class Notebook implements Serializable{
 	@Column(nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	/** 上市时间**/
-	private Date time_to_market;
+	private Date timeToMarket;
 		
 	@Column(nullable=true)
 	/**价格**/
@@ -43,7 +47,7 @@ public class Notebook implements Serializable{
 	/**操作系统**/
 	@Column(nullable=true)
 	@Enumerated(EnumType.STRING)
-	private OperatingSystem operating_system;
+	private OperatingSystem operatingSystem;
 
 	
 	public int getId() {
@@ -70,13 +74,6 @@ public class Notebook implements Serializable{
 		this.colour = colour;
 	}
 
-	public Date getTime_to_market() {
-		return time_to_market;
-	}
-
-	public void setTime_to_market(Date time_to_market) {
-		this.time_to_market = time_to_market;
-	}
 
 	public double getPrice() {
 		return price;
@@ -86,12 +83,30 @@ public class Notebook implements Serializable{
 		this.price = price;
 	}
 
-	public OperatingSystem getOperating_system() {
-		return operating_system;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setOperating_system(OperatingSystem operating_system) {
-		this.operating_system = operating_system;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
+
+	public Date getTimeToMarket() {
+		return timeToMarket;
+	}
+
+	public void setTimeToMarket(Date timeToMarket) {
+		this.timeToMarket = timeToMarket;
+	}
+
+	public OperatingSystem getOperatingSystem() {
+		return operatingSystem;
+	}
+
+	public void setOperatingSystem(OperatingSystem operatingSystem) {
+		this.operatingSystem = operatingSystem;
+	}
+
+
 	
 }
