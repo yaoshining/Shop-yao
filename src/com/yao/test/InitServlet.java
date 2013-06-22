@@ -1,5 +1,12 @@
 package com.yao.test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,5 +25,19 @@ public class InitServlet extends HttpServlet{
 	public void init() throws ServletException {
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		EntityManagerFactory factory = (EntityManagerFactory) ctx.getBean("entityManagerFactory");
+		EntityManager em = factory.createEntityManager();
+		InputStream in = getClass().getClassLoader().getResourceAsStream("import.sql");
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+			em.getTransaction().begin();
+			for(String line="";(line=reader.readLine())!=null;) {
+				em.createNativeQuery(line).executeUpdate();
+			}
+			em.getTransaction().commit();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
