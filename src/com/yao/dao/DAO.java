@@ -1,6 +1,10 @@
 package com.yao.dao;
 
 import java.util.List;
+import java.util.Map;
+
+import com.yao.dao.bean.Order;
+import com.yao.dao.bean.WhereCondition;
 
 public interface DAO<T> {
 	/**
@@ -44,4 +48,6 @@ public interface DAO<T> {
 	public T update(T entity);
 	public List<T> updateEntities(Iterable<T> entities);
 	public List<T> updateEntities(T[] entities);
+	public List<T> find(Class<T> entityClass,List<WhereCondition> conditions,Map<String,Order> orderby);
+	public List<T> findAll(Class<T> entityClass);
 }
