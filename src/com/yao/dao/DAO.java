@@ -20,25 +20,21 @@ public interface DAO<T> {
 	public void saveEntities(Object...entities);
 	/**
 	 * 删除记录
-	 * @param entityClass 删除记录所对应的实体类型
 	 * @param entityId 要删除的实体对象的主键
 	 */
 	public void removeById(Object entityId);
 	/**
 	 * 批量删除多个记录
-	 * @param entityClass 要删除记录所对应的实体类型
 	 * @param entityIds 要删除的多个实体对象的主键
 	 */
 	public void removeByIds(Object...entityIds);
 	/**
 	 * 批量删除多个记录
-	 * @param entityClass 要删除记录所对应的实体类型
 	 * @param entityIds 要删除的多个实体对象的主键的集合
 	 */
 	public void removeByIds(Iterable<?> entityIds);
 	/**
 	 * 查询某条记录
-	 * @param entityClass 实体类型
 	 * @param entityId 实体对象的主键
 	 * @return 查询到的实体对象
 	 */
