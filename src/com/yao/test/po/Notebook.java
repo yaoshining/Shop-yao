@@ -14,15 +14,16 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Notebook implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	/** 主键**/
 	@Id   //主键不能写column了
 	@GeneratedValue
 	private int id; 
 	
+	/**型号**/
+	@Column(nullable=true)
+	private String modelNumber;
+
 	/** 品牌**/
 	@Column(nullable=true)
 	private String brand;
@@ -107,6 +108,12 @@ public class Notebook implements Serializable{
 		this.operatingSystem = operatingSystem;
 	}
 
+	public String getModelNumber() {
+		return modelNumber;
+	}
 
-	
+	public void setModelNumber(String modelNumber) {
+		this.modelNumber = modelNumber;
+	}
+
 }
