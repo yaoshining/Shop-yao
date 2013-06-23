@@ -5,9 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="<%=request.getContextPath() %>/resources/css/jquery/component/zTreeStyle.css" rel="stylesheet" media="screen" />
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery/component/zTree/jquery.ztree.core-3.5.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/resources/js/jquery/component/zTree/jquery.ztree.excheck-3.5.min.js"></script>
 <title>选择用户</title>
 <script type="text/javascript">
 <!--
