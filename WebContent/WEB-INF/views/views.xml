@@ -2,4 +2,6 @@
 <tiles-definitions>
 	<definition name="mainLayout" template="/WEB-INF/views/main_template.jsp">
 	</definition>
+	<definition name="blank" template="/WEB-INF/views/blank.jsp">
+	</definition>
 </tiles-definitions>

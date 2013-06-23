@@ -59,6 +59,11 @@ public class TestDAO extends AbstractJUnit4SpringContextTests{
 	}
 	
 	@Test
+	public void testFind() {
+		employeeService.find(1);
+	}
+	
+	@Test
 	public void testBatchSave() {
 		Employee employee1 = new Employee();
 		employee1.setId(3);
