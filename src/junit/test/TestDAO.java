@@ -15,14 +15,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.yao.dao.DAO;
 import com.yao.test.Employee;
+import com.yao.test.service.EmployeeService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:beans.xml")
 public class TestDAO extends AbstractJUnit4SpringContextTests{
 	
 	@Resource
-	private DAO dao;
+	private EmployeeService employeeService;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -43,7 +43,7 @@ public class TestDAO extends AbstractJUnit4SpringContextTests{
 		employee2.setId(2);
 		employee2.setName("测试");
 		
-		dao.saveEntities(employee1,employee2);
+		employeeService.saveEntities(employee1,employee2);
 	}
 
 	@After
@@ -55,7 +55,7 @@ public class TestDAO extends AbstractJUnit4SpringContextTests{
 		Employee employee = new Employee();
 		employee.setId(3);
 		employee.setName("测试");
-		dao.save(employee);
+		employeeService.save(employee);
 	}
 	
 	@Test
@@ -70,32 +70,32 @@ public class TestDAO extends AbstractJUnit4SpringContextTests{
 		
 		List<Employee> employeeList = Arrays.asList(new Employee[]{employee1,employee2});
 //		dao.save(new Employee[]{employee1,employee2});
-		dao.saveEntities(employee1,employee2);
+		employeeService.saveEntities(employee1,employee2);
 	}
 	
 	@Test
 	public void testDelete() {
-		dao.removeById(Employee.class, 3);
+		employeeService.removeById(3);
 	}
 	
 	@Test
 	public void testBatchDelete() {
-		dao.removeByIds(Employee.class, 1,2);
+		employeeService.removeByIds(1,2);
 	}
 	
 	@Test
 	public void testUpdate() {
-		Employee emp = dao.find(Employee.class, 1);
+		Employee emp = employeeService.find(1);
 		emp.setName("修改");
-		dao.update(emp);
+		employeeService.update(emp);
 	}
 	
 	@Test
 	public void testBatchUpdate() {
-		Employee emp1 = dao.find(Employee.class, 1);
+		Employee emp1 = employeeService.find(1);
 		emp1.setName("修改2");
-		Employee emp2 = dao.find(Employee.class, 2);
+		Employee emp2 = employeeService.find(2);
 		emp2.setName("修改3");
-		dao.updateEntities(new Employee[]{emp1,emp2});
+		employeeService.updateEntities(new Employee[]{emp1,emp2});
 	}
 }

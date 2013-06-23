@@ -15,9 +15,23 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yao.dao.DAO;
 @Repository
 @Transactional
-public class JpaDaoSupport implements DAO {
+public abstract class JpaDaoSupport<T> implements DAO<T> {
+	
 	@PersistenceContext
 	protected EntityManager em;
+	private Class<T> entityClass;
+	
+	@SuppressWarnings("unchecked")
+	public JpaDaoSupport() {
+		String superClassName = getClass().getGenericSuperclass().toString();
+		String entityClassName = superClassName.substring(superClassName.indexOf("<")+1, superClassName.indexOf(">"));
+		try {
+			entityClass = (Class<T>) Class.forName(entityClassName).getClass();
+			System.out.println(entityClass);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public void save(Object entity) {
@@ -43,17 +57,17 @@ public class JpaDaoSupport implements DAO {
 	}
 
 	@Override
-	public <T> void removeById(Class<T> entityClass, Object entityId) {
+	public void removeById(Object entityId) {
 		em.remove(em.find(entityClass, entityId));
 	}
 
 	@Override
-	public <T> T find(Class<T> entityClass, Object entityId) {
-		return em.find(entityClass, entityId);
+	public T find(Object entityId) {
+		return (T) em.find(entityClass, entityId);
 	}
 	
 	@Override
-	public <T> List<T> findByIds(Class<T> entityClass, Iterable<?> entityIds) {
+	public List<T> findByIds(Iterable<?> entityIds) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(entityClass);
 		cq.from(entityClass).in(entityIds);
@@ -61,31 +75,31 @@ public class JpaDaoSupport implements DAO {
 	}
 	
 	@Override
-	public <T> List<T> findByIds(Class<T> entityClass, Object... entityIds) {
+	public List<T> findByIds(Object... entityIds) {
 		return findByIds(entityClass, Arrays.asList(entityIds));
 	}
 
 	@Override
-	public <T> void removeByIds(Class<T> entityClass, Object... entityIds) {
+	public void removeByIds(Object... entityIds) {
 		for(Object entityId : entityIds) {
 			em.remove(em.getReference(entityClass, entityId));
 		}
 	}
 
 	@Override
-	public <T> void removeByIds(Class<T> entityClass, Iterable<?> entityIds) {
+	public void removeByIds(Iterable<?> entityIds) {
 		for(Object entityId : entityIds) {
 			em.remove(em.getReference(entityClass, entityId));
 		}
 	}
 
 	@Override
-	public <T> T update(T entity) {
+	public T update(T entity) {
 		return em.merge(entity);
 	}
 	
 	@Override
-	public <T> List<T> updateEntities(Iterable<T> entities) {
+	public List<T> updateEntities(Iterable<T> entities) {
 		List<T> mergedEntities = new ArrayList<T>();
 		for(T entity : entities) {
 			mergedEntities.add(em.merge(entity));
@@ -94,7 +108,7 @@ public class JpaDaoSupport implements DAO {
 	}
 	
 	@Override
-	public <T> List<T> updateEntities(T[] entities) {
+	public List<T> updateEntities(T[] entities) {
 		return updateEntities(Arrays.asList(entities));
 	}
 }
