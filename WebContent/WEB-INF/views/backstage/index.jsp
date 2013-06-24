@@ -113,6 +113,8 @@ Ext.application({
 			extend: 'Ext.data.Model',
 			fields:	[
 			     {name: 'text', type: 'string', defaultValue: null},
+			     {name: 'icon', type: 'string', defaultValue: null},
+			     {name: 'iconCls', type: 'string', defaultValue: null},
 			     {name: 'leaf', type: 'bool', defaultValue: false},
 			     {name: 'expanded', type: 'bool', defaultValue: false},
 		       	 {name: 'url', type: 'string', defaultValue: null}
@@ -136,7 +138,7 @@ Ext.application({
 		    root: {
 		        expanded: true,
 		        children: [
-		            { text: "新建商品", leaf: true, url: '/ShopYao/index.jsp' },
+		            { text: "新建商品", leaf: true, url: '/ShopYao/index.jsp', icon: 'resources/images/backstage/icons/add.png' },
 		            { text: "修改商品", leaf: true },
 		            { text: "商品查询", leaf: true }
 		        ]
