@@ -105,11 +105,20 @@ p {
 <script type="text/javascript">
 <!--
 Ext.application({
-	requires: ['Ext.container.Viewport'],
+	requires: ['Ext.container.Viewport','Ext.window.MessageBox','Ext.data.Model'],
 	name: 'BM',  //backage management
 	
 	launch: function() {
-		var store = Ext.create('Ext.data.TreeStore', {
+		Ext.define('BM.model.Menu',{
+			extend: 'Ext.data.Model',
+			fields:	[
+			     {name: 'text', type: 'string', defaultValue: null},
+			     {name: 'leaf', type: 'bool', defaultValue: false},
+			     {name: 'expanded', type: 'bool', defaultValue: false},
+		       	 {name: 'url', type: 'string', defaultValue: null}
+			]
+		});
+		var deptStore = Ext.create('Ext.data.TreeStore', {
 		    root: {
 		        expanded: true,
 		        children: [
@@ -119,6 +128,17 @@ Ext.application({
 		                { text: "XXX管理", leaf: true}
 		            ] },
 		            { text: "XXX管理", leaf: true }
+		        ]
+		    }
+		});
+		var productStore = Ext.create('Ext.data.TreeStore', {
+	    	model: 'BM.model.Menu',
+		    root: {
+		        expanded: true,
+		        children: [
+		            { text: "新建商品", leaf: true, url: '/ShopYao/index.jsp' },
+		            { text: "修改商品", leaf: true },
+		            { text: "商品查询", leaf: true }
 		        ]
 		    }
 		});
@@ -204,14 +224,34 @@ Ext.application({
                         title: '部门管理',
                         width: 200,
                         height: 150,
-                        store: store,
+                        store: deptStore,
                         rootVisible: false,
                         iconCls: 'dept'
-                    }),{
-                        contentEl: 'west',
+                    }),Ext.create('Ext.tree.Panel', {
                         title: '商品管理',
-                        iconCls: 'nav' // see the HEAD section for style used
-                    }, {
+                        width: 200,
+                        height: 150,
+                        store: productStore,
+                        rootVisible: false,
+                        iconCls: 'nav',
+                        listeners: {
+                        	'itemclick': function(view,record,item,index,e){
+                        		var url = record.get('url');
+                        		if(url!="") {
+	                        		Ext.getCmp('contentTabPanel').add({
+	                                    title: record.get('text'),
+	                                    closable: true,
+	                                    autoScroll: true,
+	                                    loader: {
+	                                    	url: url,
+	                                    	autoLoad: true
+	                                    }
+	                        		}).show();
+                        		}
+                        		//Ext.Msg.alert();
+                        	}
+                        }
+                    }), {
                         title: '系统设置',
                         html: '<p>系统设置树</p>',
                         iconCls: 'settings'
@@ -226,6 +266,7 @@ Ext.application({
                 // as a Container
 
                 Ext.create('Ext.tab.Panel', {
+                	id: 'contentTabPanel',
                     region: 'center', // a center region is ALWAYS required for border layout
                     deferredRender: false,
                     activeTab: 0,     // first tab initially active
