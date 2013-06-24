@@ -1,0 +1,6 @@
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://struts.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="shop/login" extends="blank">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/shop/login.jsp"/>
+	</definition>
+</tiles-definitions>

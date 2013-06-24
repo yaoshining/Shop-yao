@@ -1,6 +1,9 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://struts.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-	<definition name="backstage.index" extends="blank">
+	<definition name="backstage/index" extends="blank">
 		<put-attribute name="main" type="template" value="/WEB-INF/views/backstage/index.jsp"/>
+	</definition>
+	<definition name="backstage/login" extends="blank">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/backstage/login.jsp"/>
 	</definition>
 </tiles-definitions>

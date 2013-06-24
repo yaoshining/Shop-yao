@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/backstage")
 public class BackstageController {
+	
 	@RequestMapping(value={"","/","index"},method=RequestMethod.GET)
 	public String index() {
-		return "backstage.index";
+		return "backstage/index";
 	}
 	
 }
