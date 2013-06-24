@@ -24,9 +24,12 @@
 #msg-div .msg {
     border-radius: 8px;
     -moz-border-radius: 8px;
-    background: rgb(244, 244, 244);
+    background: rgba(244, 244, 244,0.9);
     background-clip: border-box;
-    border: 2px solid #ccc;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.3);
+    color: rgba(0,0,0);
+    line-height: 1.5;
     margin-top: 2px;
     padding: 10px 15px;
     color: #555;
@@ -345,7 +348,7 @@ Ext.MyUtil = function(){
 
 Ext.onReady(function(){
 	Ext.MyUtil.init();
-	Ext.MyUtil.msg("您好","商城后台管理系统已经初始化完成！",3000);
+	Ext.MyUtil.msg("您好","商城后台管理系统已经初始化完成！", 3000);
 }, Ext.MyUtil);
 //-->
 </script>
