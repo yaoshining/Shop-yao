@@ -120,7 +120,6 @@ p {
     </div>
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = '正在载入JS核心库...';</script>
 <script type="text/javascript" src="resources/script/extjs/ext-debug.js"></script>
-<script type="text/javascript">Ext.require(['Ext.container.Viewport']);</script>
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = '正在载入图形化界面组件...';</script>
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = '初始化...';</script>
 <script type="text/javascript">
