@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.yao.data.enumeration.OperatingSystem;
+
 @Entity
 public class Notebook implements Serializable{
 	private static final long serialVersionUID = 1L;
