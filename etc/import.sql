@@ -8,3 +8,5 @@ insert into Notebook(brand,colour,timeToMarket,price,operatingSystem,size) value
 insert into Notebook(brand,colour,timeToMarket,price,operatingSystem,size) values('三菱','黑色','2013-11-11',4000.0,'WindowsXP',8);
 insert into Notebook(brand,colour,timeToMarket,price,operatingSystem,size) values('苹果','黑色','2011-11-11',4000.0,'WindowsXP',9);
 insert into Notebook(brand,colour,timeToMarket,price,operatingSystem,size) values('索尼','黑色','2010-11-11',4000.0,'WindowsXP',10);
+insert into Resource(code,name,url,module) values('product_manage_add','新建商品','/index.html','商品管理');
+insert into Menu(name,parentMenu) values('添加商品','父菜单');
