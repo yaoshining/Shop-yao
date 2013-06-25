@@ -1,11 +1,11 @@
-package com.yao.test.service.impl;
+package com.yao.backstage.service.product.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.yao.backstage.model.po.Notebook;
+import com.yao.backstage.service.product.NotebookService;
 import com.yao.dao.jpa.JpaDaoSupport;
-import com.yao.test.po.Notebook;
-import com.yao.test.service.NotebookService;
 @Service  //告诉Spring这是个Service
 @Transactional //告诉spring对这个类添加事务管理
 public class NotebookServiceBean extends JpaDaoSupport<Notebook>  implements NotebookService{

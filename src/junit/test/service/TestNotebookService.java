@@ -1,10 +1,5 @@
 package junit.test.service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.junit.After;
@@ -17,9 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.yao.test.po.Notebook;
-import com.yao.test.po.OperatingSystem;
-import com.yao.test.service.NotebookService;
+import com.yao.backstage.model.po.Notebook;
+import com.yao.backstage.service.product.NotebookService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:beans.xml")
 public class TestNotebookService extends AbstractJUnit4SpringContextTests{

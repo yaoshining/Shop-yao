@@ -1,7 +1,7 @@
-package com.yao.test.service;
+package com.yao.backstage.service.system;
 
+import com.yao.backstage.model.po.Resource;
 import com.yao.dao.DAO;
-import com.yao.test.po.Resource;
 
 public interface ResourceService extends DAO<Resource> {
 

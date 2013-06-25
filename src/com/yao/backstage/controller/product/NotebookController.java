@@ -1,4 +1,4 @@
-package com.yao.test.controller;
+package com.yao.backstage.controller.product;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yao.test.po.Notebook;
-import com.yao.test.service.NotebookService;
+import com.yao.backstage.model.po.Notebook;
+import com.yao.backstage.service.product.NotebookService;
 
 @Controller
 @RequestMapping("/notebook")   //注意看路径,enb2
