@@ -280,7 +280,7 @@ Ext.application({
                         iconCls: 'settings'
                     }, {
                         title: '其他',
-                        html: '<p>其他</p>',
+                        html: '<a href="logout">退出</a>',
                         iconCls: 'info'
                     }]
                 },
