@@ -56,9 +56,20 @@ public abstract class JpaDaoSupport implements DAO {
 
 	@Override
 	public <T> void removeById(Class<T> entityClass, Object entityId) {
-		em.remove(em.find(entityClass, entityId));
+		removeByIds(entityClass, entityId);
 	}
 	
+	@Override
+	public <T> void removeByIds(Class<T> entityClass, Object... entityIds) {
+		removeByIds(entityClass, Arrays.asList(entityIds));
+	}
+
+	@Override
+	public <T> void removeByIds(Class<T> entityClass, Iterable<?> entityIds) {
+		for(Object entityId : entityIds) {
+			em.remove(em.getReference(entityClass, entityId));
+		}
+	}
 	@Override
 	@Transactional(readOnly=true,propagation=Propagation.NOT_SUPPORTED)
 	public <T> T find(Class<T> entityClass, Object entityId) {
@@ -78,20 +89,6 @@ public abstract class JpaDaoSupport implements DAO {
 	@Override
 	public <T> List<T> findByIds(Class<T> entityClass, Object... entityIds) {
 		return findByIds(entityClass, Arrays.asList(entityIds));
-	}
-
-	@Override
-	public <T> void removeByIds(Class<T> entityClass, Object... entityIds) {
-		for(Object entityId : entityIds) {
-			em.remove(em.getReference(entityClass, entityId));
-		}
-	}
-
-	@Override
-	public <T> void removeByIds(Class<T> entityClass, Iterable<?> entityIds) {
-		for(Object entityId : entityIds) {
-			em.remove(em.getReference(entityClass, entityId));
-		}
 	}
 
 	@Override
