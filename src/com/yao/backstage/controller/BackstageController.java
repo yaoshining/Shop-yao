@@ -10,7 +10,7 @@ public class BackstageController {
 	
 	@RequestMapping(value={"","/","index"},method=RequestMethod.GET)
 	public String index() {
-		return "backstage/index";
+		return "backstage/index"; 
 	}
 	
 }
