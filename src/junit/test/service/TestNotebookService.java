@@ -52,7 +52,7 @@ public class TestNotebookService extends AbstractJUnit4SpringContextTests{
 	public void testUpdate() {  //这写个修改
 		Notebook nb=new Notebook();
 		notebookService.save(nb); //修改肯定要现有数据了,这就已经有了,id自增长为1,其他都是null,然后修改,肯定要先查出来了
-		Notebook notebook = notebookService.find(1);   //先查啊....查要按ID查吧,给哥ID就行了么,你看说明啊
+		Notebook notebook = notebookService.find(Notebook.class, 1);   //先查啊....查要按ID查吧,给哥ID就行了么,你看说明啊
 		//现在查到的notebook就是数据库里的一条记录,上面save进去的么,id1,别的为null,你把他的值改了
 		notebook.setBrand("联想修改"); 
 		notebook.setColour("黑");  //这就已经该了么
@@ -61,7 +61,7 @@ public class TestNotebookService extends AbstractJUnit4SpringContextTests{
 	
 	@Test
 	public void testDelete(){
-		notebookService.removeById(1);  //行了,这些你会用就行,关键是有的时候增删改查做不了,得自己写逻辑
+		notebookService.removeById(Notebook.class, 1);  //行了,这些你会用就行,关键是有的时候增删改查做不了,得自己写逻辑
 	}
 	
 	@Test

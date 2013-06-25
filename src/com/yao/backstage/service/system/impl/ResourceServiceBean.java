@@ -8,6 +8,6 @@ import com.yao.backstage.service.system.ResourceService;
 import com.yao.dao.jpa.JpaDaoSupport;
 @Service 
 @Transactional 
-public class ResourceServiceBean extends JpaDaoSupport<Resource>  implements ResourceService{
+public class ResourceServiceBean extends JpaDaoSupport  implements ResourceService{
 
 }

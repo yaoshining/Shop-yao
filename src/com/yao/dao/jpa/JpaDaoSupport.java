@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -17,6 +18,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yao.dao.DAO;
@@ -24,22 +26,10 @@ import com.yao.dao.bean.SearchOperator;
 import com.yao.dao.bean.WhereCondition;
 @Repository
 @Transactional
-public abstract class JpaDaoSupport<T> implements DAO<T> {
+public abstract class JpaDaoSupport implements DAO {
 	
 	@PersistenceContext
 	protected EntityManager em;
-	private Class<T> entityClass;
-	
-	@SuppressWarnings("unchecked")
-	public JpaDaoSupport() {
-		String superClassName = getClass().getGenericSuperclass().toString();
-		String entityClassName = superClassName.substring(superClassName.indexOf("<")+1, superClassName.indexOf(">"));
-		try {
-			entityClass = (Class<T>) Class.forName(entityClassName).getClass();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	@Override
 	public void save(Object entity) {
@@ -65,49 +55,52 @@ public abstract class JpaDaoSupport<T> implements DAO<T> {
 	}
 
 	@Override
-	public void removeById(Object entityId) {
+	public <T> void removeById(Class<T> entityClass, Object entityId) {
 		em.remove(em.find(entityClass, entityId));
 	}
-
+	
 	@Override
-	public T find(Object entityId) {
+	@Transactional(readOnly=true,propagation=Propagation.NOT_SUPPORTED)
+	public <T> T find(Class<T> entityClass, Object entityId) {
 		return (T) em.find(entityClass, entityId);
 	}
 	
 	@Override
-	public List<T> findByIds(Iterable<?> entityIds) {
+	@Transactional(readOnly=true,propagation=Propagation.NOT_SUPPORTED)
+	public <T> List<T> findByIds(Class<T> entityClass, Iterable<?> entityIds) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(entityClass);
-		cq.from(entityClass).in(entityIds);
+		Root<T> root = cq.from(entityClass);
+		cq.where(root.get("id").in(1,2,3,4));
 		return em.createQuery(cq).getResultList();
 	}
 	
 	@Override
-	public List<T> findByIds(Object... entityIds) {
+	public <T> List<T> findByIds(Class<T> entityClass, Object... entityIds) {
 		return findByIds(entityClass, Arrays.asList(entityIds));
 	}
 
 	@Override
-	public void removeByIds(Object... entityIds) {
+	public <T> void removeByIds(Class<T> entityClass, Object... entityIds) {
 		for(Object entityId : entityIds) {
 			em.remove(em.getReference(entityClass, entityId));
 		}
 	}
 
 	@Override
-	public void removeByIds(Iterable<?> entityIds) {
+	public <T> void removeByIds(Class<T> entityClass, Iterable<?> entityIds) {
 		for(Object entityId : entityIds) {
 			em.remove(em.getReference(entityClass, entityId));
 		}
 	}
 
 	@Override
-	public T update(T entity) {
+	public <T> T update(T entity) {
 		return em.merge(entity);
 	}
 	
 	@Override
-	public List<T> updateEntities(Iterable<T> entities) {
+	public <T> List<T> updateEntities(Iterable<T> entities) {
 		List<T> mergedEntities = new ArrayList<T>();
 		for(T entity : entities) {
 			mergedEntities.add(em.merge(entity));
@@ -116,11 +109,13 @@ public abstract class JpaDaoSupport<T> implements DAO<T> {
 	}
 	
 	@Override
-	public List<T> updateEntities(T[] entities) {
+	public <T> List<T> updateEntities(T[] entities) {
 		return updateEntities(Arrays.asList(entities));
 	}
 	
-	public List<T> findAll(Class<T> entityClass) {
+	@Override
+	@Transactional(readOnly=true,propagation=Propagation.NOT_SUPPORTED)
+	public <T> List<T> findAll(Class<T> entityClass) {
 		List<T> resultList = Collections.emptyList();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(entityClass);
@@ -130,7 +125,8 @@ public abstract class JpaDaoSupport<T> implements DAO<T> {
 	}
 	
 	@Override
-	public List<T> find(Class<T> entityClass,List<WhereCondition> conditions,Map<String,com.yao.dao.bean.Order> orderby) {
+	@Transactional(readOnly=true,propagation=Propagation.NOT_SUPPORTED)
+	public <T> List<T> find(Class<T> entityClass,List<WhereCondition> conditions,Map<String,com.yao.dao.bean.Order> orderby) {
 		List<T> resultList = Collections.emptyList();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(entityClass);
@@ -173,4 +169,12 @@ public abstract class JpaDaoSupport<T> implements DAO<T> {
 		return resultList;
 	}
 	
+	protected <T> String getEntityName(Class<T> entityClass) {
+		String entityName = entityClass.getSimpleName();
+		Entity entity = entityClass.getAnnotation(Entity.class);
+		if(entity.name()!=null && !"".equals(entityName)) {
+			entityName = entity.name();
+		}
+		return entityName;
+	}
 }

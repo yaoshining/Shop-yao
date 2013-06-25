@@ -6,7 +6,7 @@ import java.util.Map;
 import com.yao.dao.bean.Order;
 import com.yao.dao.bean.WhereCondition;
 
-public interface DAO<T> {
+public interface DAO {
 	/**
 	 * 保存实体对象
 	 * @param entity 可以是实体对象或实体对象的数组
@@ -26,28 +26,28 @@ public interface DAO<T> {
 	 * 删除记录
 	 * @param entityId 要删除的实体对象的主键
 	 */
-	public void removeById(Object entityId);
+	public <T> void removeById(Class<T> entityClass, Object entityId);
 	/**
 	 * 批量删除多个记录
 	 * @param entityIds 要删除的多个实体对象的主键
 	 */
-	public void removeByIds(Object...entityIds);
+	public <T> void removeByIds(Class<T> entityClass, Object...entityIds);
 	/**
 	 * 批量删除多个记录
 	 * @param entityIds 要删除的多个实体对象的主键的集合
 	 */
-	public void removeByIds(Iterable<?> entityIds);
+	public <T> void removeByIds(Class<T> entityClass, Iterable<?> entityIds);
 	/**
 	 * 查询某条记录
 	 * @param entityId 实体对象的主键
 	 * @return 查询到的实体对象
 	 */
-	public T find(Object entityId);
-	public List<T> findByIds(Iterable<?> entityIds);
-	public List<T> findByIds(Object...entityIds);
-	public T update(T entity);
-	public List<T> updateEntities(Iterable<T> entities);
-	public List<T> updateEntities(T[] entities);
-	public List<T> find(Class<T> entityClass,List<WhereCondition> conditions,Map<String,Order> orderby);
-	public List<T> findAll(Class<T> entityClass);
+	public <T> T find(Class<T> entityClass, Object entityId);
+	public <T> List<T> findByIds(Class<T> entityClass, Iterable<?> entityIds);
+	public <T> List<T> findByIds(Class<T> entityClass, Object...entityIds);
+	public <T> T update(T entity);
+	public <T> List<T> updateEntities(Iterable<T> entities);
+	public <T> List<T> updateEntities(T[] entities);
+	public <T> List<T> find(Class<T> entityClass,List<WhereCondition> conditions,Map<String,Order> orderby);
+	public <T> List<T> findAll(Class<T> entityClass);
 }
