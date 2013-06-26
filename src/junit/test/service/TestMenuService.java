@@ -17,8 +17,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.yao.backstage.model.po.Menu;
-import com.yao.backstage.model.po.Notebook;
-import com.yao.backstage.model.po.Resources;
 import com.yao.backstage.service.system.MenuService;
 import com.yao.backstage.service.system.ResourcesService;
 
@@ -90,7 +88,7 @@ public class TestMenuService extends AbstractJUnit4SpringContextTests {
 				new com.yao.backstage.model.po.Resources(),    //这里每一个都是一个菜单对象,也就是子菜单
 				new com.yao.backstage.model.po.Resources()
 		}));
-		//m.setResources("sasdas");  //同样资源和子菜单一个道理,不过一般情况下,在定义菜单的时候这些资源必须已经存在了,因为现有资源,才能定义菜单下有哪些资源
+		m.setResources(children1);  //同样资源和子菜单一个道理,不过一般情况下,在定义菜单的时候这些资源必须已经存在了,因为现有资源,才能定义菜单下有哪些资源
 		menuService.save(m);
 	}	
 	@Test
