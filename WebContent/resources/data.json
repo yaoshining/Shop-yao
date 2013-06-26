@@ -1,0 +1,1 @@
+{success: true,children: [{ text: "新建商品", leaf: true, url: '/ShopYao/index.jsp', icon: 'resources/images/backstage/icons/add.png' },{ text: "修改商品", leaf: true },{ text: "商品查询", leaf: true }]}

@@ -138,7 +138,13 @@ Ext.application({
 			     {name: 'leaf', type: 'bool', defaultValue: false},
 			     {name: 'expanded', type: 'bool', defaultValue: false},
 		       	 {name: 'url', type: 'string', defaultValue: null}
-			]
+			],
+			proxy: {
+				type: "ajax",
+				api: {
+					read: "resources/data.json"
+				}
+			}
 		});
 		var deptStore = Ext.create('Ext.data.TreeStore', {
 		    root: {
@@ -156,12 +162,7 @@ Ext.application({
 		var productStore = Ext.create('Ext.data.TreeStore', {
 	    	model: 'BM.model.Menu',
 		    root: {
-		        expanded: true,
-		        children: [
-		            { text: "新建商品", leaf: true, url: '/ShopYao/index.jsp', icon: 'resources/images/backstage/icons/add.png' },
-		            { text: "修改商品", leaf: true },
-		            { text: "商品查询", leaf: true }
-		        ]
+		        expanded: true
 		    }
 		});
         Ext.create('Ext.container.Viewport', {
@@ -248,11 +249,13 @@ Ext.application({
                         height: 150,
                         store: deptStore,
                         rootVisible: false,
-                        iconCls: 'dept'
+                        iconCls: 'dept',
+                        lines: false
                     }),Ext.create('Ext.tree.Panel', {
                         title: '商品管理',
                         width: 200,
                         height: 150,
+                        lines: false,
                         store: productStore,
                         rootVisible: false,
                         iconCls: 'nav',
