@@ -100,7 +100,6 @@ public class TestMenuService extends AbstractJUnit4SpringContextTests {
 	public void testUpdate() { 
 		com.yao.backstage.model.po.Resources rs=new com.yao.backstage.model.po.Resources();
 		resourcesService.save(rs);
-		com.yao.backstage.model.po.Resources notebook = resourcesService.find(com.yao.backstage.model.po.Resources.class, 1);
 		rs.setCode("asdsadad"); 
 		Set<Menu> menus = new HashSet<Menu>(Arrays.asList(new Menu[]{
 				new Menu(),
@@ -112,6 +111,6 @@ public class TestMenuService extends AbstractJUnit4SpringContextTests {
 		rs.setModule("module");
 		rs.setName("name");
 		rs.setUrl("url");
-		resourcesService.update(notebook); 
+		resourcesService.update(rs); 
 	}	
 }
