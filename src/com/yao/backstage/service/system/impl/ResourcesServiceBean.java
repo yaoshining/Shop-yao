@@ -3,11 +3,11 @@ package com.yao.backstage.service.system.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yao.backstage.model.po.Resource;
-import com.yao.backstage.service.system.ResourceService;
+import com.yao.backstage.model.po.Resources;
+import com.yao.backstage.service.system.ResourcesService;
 import com.yao.dao.jpa.JpaDaoSupport;
 @Service 
 @Transactional 
-public class ResourceServiceBean extends JpaDaoSupport  implements ResourceService{
+public class ResourcesServiceBean extends JpaDaoSupport  implements ResourcesService{
 
 }

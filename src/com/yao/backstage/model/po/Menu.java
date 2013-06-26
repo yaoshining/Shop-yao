@@ -26,16 +26,19 @@ public class Menu implements Serializable {
 	/** 名字**/
 	@Column(nullable=false)
 	private String name;
+	
 	/** 父菜单**/
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH},optional=true)
 	@JoinColumn(name="parentId")
 	private Menu parent;
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="parent") 
+	
 	/** 子菜单 **/
 	private Set<Menu> children;
+	
 	/** 资源 **/
 	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER,mappedBy="menus")
-	private Set<Resource> resources; 
+	private Set<Resources> resources; 
 	
 	public Menu() {}
 	public Menu(String name) {
@@ -43,10 +46,10 @@ public class Menu implements Serializable {
 	}
 	
 	/******  getter and setter  *******/
-	public Set<Resource> getResources() {
+	public Set<Resources> getResources() {
 		return resources;
 	}
-	public void setResources(Set<Resource> resources) {
+	public void setResources(Set<Resources> resources) {
 		this.resources = resources;
 	}
 	public int getId() {

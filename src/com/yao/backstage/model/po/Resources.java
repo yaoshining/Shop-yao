@@ -13,7 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Resource implements Serializable {
+public class Resources implements Serializable {
 
 	/**
 	 * id:1  code:  'name:   url:  模块
@@ -44,13 +44,13 @@ public class Resource implements Serializable {
 		)
 		private Set<Menu> menus;
 		
-		public Resource() {}
+		public Resources() {}
 		
-		public Resource(String code) {
+		public Resources(String code) {
 			this.code = code;
 		}
 		
-		public Resource(String code, String name, String url, String module) {
+		public Resources(String code, String name, String url, String module) {
 			super();
 			this.code = code;
 			this.name = name;
