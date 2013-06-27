@@ -27,7 +27,7 @@ public class NotebookController {
 		System.out.println(id);
 		return "notebook";
 	}
-	
+		
 	@RequestMapping("/find")
 	@ResponseBody
 	public List<Notebook> find(@RequestParam int id) {  
