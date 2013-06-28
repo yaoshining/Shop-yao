@@ -147,6 +147,9 @@ public abstract class JpaDaoSupport implements DAO {
 					if(value.getClass().isArray())
 						predicates.add(root.get(fieldName).in((Object[])value));
 				}
+				if(operator == SearchOperator.IS_NULL) {
+					predicates.add(root.get(fieldName).isNull());
+				}
 			}
 			cq.where(predicates.toArray(new Predicate[conditions.size()]));
 		}

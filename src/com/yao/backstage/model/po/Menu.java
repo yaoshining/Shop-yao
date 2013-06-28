@@ -31,7 +31,6 @@ public class Menu implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@JsonIgnore
 	private int id;
 	/** 名字**/
 	@Column(nullable=false)
@@ -89,6 +88,8 @@ public class Menu implements Serializable {
 		this.parent = parent;
 	}
 	public Set<Menu> getChildren() {
+		if(children==null || children.size()<0)
+			leaf = true;
 		return children;
 	}
 	public void setChildren(Set<Menu> children) {

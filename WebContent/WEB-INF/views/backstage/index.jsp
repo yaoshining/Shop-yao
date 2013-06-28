@@ -125,13 +125,19 @@ p {
 <script type="text/javascript"> 
 <!--
 Ext.application({
-	requires: ['Ext.container.Viewport','Ext.window.MessageBox','Ext.data.Model'],
+	requires: [
+    	'Ext.container.Viewport',
+    	'Ext.window.MessageBox',
+    	'Ext.data.Model',
+    	'Ext.data.proxy.Rest'
+    ],
 	name: 'BM',  //backage management
 	
 	launch: function() {
 		Ext.define('BM.model.Menu',{
 			extend: 'Ext.data.Model',
 			fields:	[
+			     {name: 'id', type: 'string', defaultValue: null},
 			     {name: 'text', type: 'string', defaultValue: null},
 			     {name: 'icon', type: 'string', defaultValue: null},
 			     {name: 'iconCls', type: 'string', defaultValue: null},
@@ -140,10 +146,9 @@ Ext.application({
 		       	 {name: 'url', type: 'string', defaultValue: null}
 			],
 			proxy: {
-				type: "ajax",
-				api: {
-					read: "resources/data.json"
-				}
+				type: "rest",
+				url: "backstage/menus",
+				reader: "json"
 			}
 		});
 		var deptStore = Ext.create('Ext.data.TreeStore', {
@@ -162,6 +167,7 @@ Ext.application({
 		var productStore = Ext.create('Ext.data.TreeStore', {
 	    	model: 'BM.model.Menu',
 		    root: {
+		    	name: "Menu",
 		        expanded: true
 		    }
 		});
