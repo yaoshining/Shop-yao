@@ -27,17 +27,21 @@ public class MenuController {
 	private MenuService menuService;
 	@Resource
 	private ResourcesService resourcesService;
-	@RequestMapping(value="/{parentId}",method=RequestMethod.GET,produces={"application/json;charset=UTF-8"})
+	@RequestMapping(value="/{parentId}",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Menu> getMenusByParent(@PathVariable("parentId") String parentId) {
+	public List<Menu> getMenusByParent(@PathVariable("parentId") int parentId) {
 		System.out.println(parentId);
 		List<Menu> menuList = Collections.emptyList();
 		List<Resources> resourcesList = Collections.emptyList();
+		List<Object> resultList = new ArrayList<Object>();
 		List<WhereCondition> conditions = Arrays.asList(new WhereCondition[]{
 				new WhereCondition("parent", SearchOperator.IS_NULL, null)
 		});
-		if(parentId.equals("root"))
+		if(parentId<=0) {
 			menuList = menuService.find(Menu.class, conditions , null);
+		} else{
+			menuList = new ArrayList<Menu>(menuService.find(Menu.class, parentId).getChildren());
+		}
 		return menuList;
 	}
 }

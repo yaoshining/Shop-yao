@@ -11,8 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
+
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 @Entity
+@JsonAutoDetect
 public class Resources implements Serializable {
 
 	/**
@@ -25,6 +31,7 @@ public class Resources implements Serializable {
 		/** 代码**/
 		private String code;
 		/** 显示的名字**/
+		@JsonProperty("text")
 		private String name = "资源名";
 		/** 地址**/
 		private String url = "#";
@@ -42,8 +49,12 @@ public class Resources implements Serializable {
 						@JoinColumn(name="resourceId")
 				}
 		)
+		@JsonIgnore
 		private Set<Menu> menus;
-		
+		private String icon;
+		private String iconCls;
+		@Transient
+		private final boolean leaf = true;
 		public Resources() {}
 		
 		public Resources(String code) {
@@ -95,4 +106,24 @@ public class Resources implements Serializable {
 			this.menus = menus;
 		}
 
+		public String getIcon() {
+			return icon;
+		}
+
+		public void setIcon(String icon) {
+			this.icon = icon;
+		}
+
+		public String getIconCls() {
+			return iconCls;
+		}
+
+		public void setIconCls(String iconCls) {
+			this.iconCls = iconCls;
+		}
+
+		public boolean isLeaf() {
+			return leaf;
+		}
+		
 }

@@ -45,6 +45,7 @@ public class Menu implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="parent") 
 	
 	/** 子菜单 **/
+	@JsonIgnore
 	private Set<Menu> children;
 	
 	/** 资源 **/
@@ -57,6 +58,8 @@ public class Menu implements Serializable {
 	private boolean leaf = false;
 	@Transient
 	private boolean expanded = false;
+	@Transient
+	private boolean loaded = false;
 	public Menu() {}
 	public Menu(String name) {
 		this.name = name;
@@ -88,7 +91,7 @@ public class Menu implements Serializable {
 		this.parent = parent;
 	}
 	public Set<Menu> getChildren() {
-		if(children==null || children.size()<0)
+		if(children.size()<=0 && resources.size()<=0)
 			leaf = true;
 		return children;
 	}
@@ -112,6 +115,12 @@ public class Menu implements Serializable {
 	}
 	public boolean isExpanded() {
 		return expanded;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public boolean isLoaded() {
+		return loaded;
 	}
 	
 }
