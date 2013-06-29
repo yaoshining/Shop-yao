@@ -6,11 +6,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -20,6 +20,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+
+import com.yao.data.enumeration.BackstageModule;
 
 @Entity
 @JsonAutoDetect
@@ -42,18 +44,21 @@ public class Menu implements Serializable {
 	@JoinColumn(name="parentId")
 	@JsonIgnore
 	private Menu parent;
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="parent") 
-	
+	@Enumerated(EnumType.STRING)
+	@JsonIgnore
+	private BackstageModule module;
 	/** 子菜单 **/
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="parent")
 	@JsonIgnore
 	private Set<Menu> children;
 	
 	/** 资源 **/
-	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER,mappedBy="menus")
-	@JsonIgnore
-	private Set<Resources> resources; 
+//	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER,mappedBy="menus")
+//	@JsonIgnore
+//	private Set<Resources> resources; 
 	private String icon;
 	private String iconCls;
+	private String url = "/index.jsp";
 	@Transient
 	private boolean leaf = false;
 	@Transient
@@ -66,12 +71,6 @@ public class Menu implements Serializable {
 	}
 	
 	/******  getter and setter  *******/
-	public Set<Resources> getResources() {
-		return resources;
-	}
-	public void setResources(Set<Resources> resources) {
-		this.resources = resources;
-	}
 	public int getId() {
 		return id;
 	}
@@ -91,8 +90,6 @@ public class Menu implements Serializable {
 		this.parent = parent;
 	}
 	public Set<Menu> getChildren() {
-		if(children.size()<=0 && resources.size()<=0)
-			leaf = true;
 		return children;
 	}
 	public void setChildren(Set<Menu> children) {
@@ -111,6 +108,9 @@ public class Menu implements Serializable {
 		this.iconCls = iconCls;
 	}
 	public boolean isLeaf() {
+		if(children.size()<=0) {
+			leaf = true;
+		}
 		return leaf;
 	}
 	public boolean isExpanded() {
@@ -120,7 +120,22 @@ public class Menu implements Serializable {
 		return serialVersionUID;
 	}
 	public boolean isLoaded() {
+		if(children.size()<=0) {
+			loaded = true;
+		}
 		return loaded;
+	}
+	public BackstageModule getModule() {
+		return module;
+	}
+	public void setModule(BackstageModule module) {
+		this.module = module;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }

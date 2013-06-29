@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yao.backstage.model.po.Menu;
-import com.yao.backstage.model.po.Resources;
 import com.yao.backstage.service.system.MenuService;
 import com.yao.backstage.service.system.ResourcesService;
 import com.yao.dao.bean.SearchOperator;
 import com.yao.dao.bean.WhereCondition;
+import com.yao.data.enumeration.BackstageModule;
 
 @Controller
 @RequestMapping("/backstage/menus")
@@ -27,15 +27,13 @@ public class MenuController {
 	private MenuService menuService;
 	@Resource
 	private ResourcesService resourcesService;
-	@RequestMapping(value="/{parentId}",method=RequestMethod.GET)
+	@RequestMapping(value="/{module}/{parentId}",method=RequestMethod.GET)
 	@ResponseBody
-	public List<Menu> getMenusByParent(@PathVariable("parentId") int parentId) {
-		System.out.println(parentId);
+	public List<Menu> getMenusByParent(@PathVariable("module") BackstageModule module, @PathVariable("parentId") int parentId) {
 		List<Menu> menuList = Collections.emptyList();
-		List<Resources> resourcesList = Collections.emptyList();
-		List<Object> resultList = new ArrayList<Object>();
 		List<WhereCondition> conditions = Arrays.asList(new WhereCondition[]{
-				new WhereCondition("parent", SearchOperator.IS_NULL, null)
+				new WhereCondition("parent", SearchOperator.IS_NULL, null),
+				new WhereCondition("module", SearchOperator.EQUAL, module)
 		});
 		if(parentId<=0) {
 			menuList = menuService.find(Menu.class, conditions , null);

@@ -6,7 +6,7 @@ Ext.define('BM.view.product.Menu' ,{
     width: 200,
     height: 150,
     lines: false,
-    store: 'Menus',
+    store: 'product.Menus',
     rootVisible: false,
     iconCls: 'nav',
     listeners: {

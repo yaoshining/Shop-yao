@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.yao.backstage.model.po.Menu;
 import com.yao.backstage.service.system.MenuService;
 import com.yao.backstage.service.system.ResourcesService;
+import com.yao.data.enumeration.BackstageModule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:beans.xml")
@@ -83,12 +84,6 @@ public class TestMenuService extends AbstractJUnit4SpringContextTests {
 		//parentMenu的get,set.......
 		m.setParent(parentMenu);  //这里从语法上来说要set进po里定义的parent类型的对象,看下po,parent是Menu类型的把
 		//从语义上来说,我们要设置当前菜单的父菜单,肯定也是个菜单了
-		Set<com.yao.backstage.model.po.Resources> children1 = 
-				new HashSet<com.yao.backstage.model.po.Resources>(Arrays.asList(new com.yao.backstage.model.po.Resources[]{
-				new com.yao.backstage.model.po.Resources(),    //这里每一个都是一个菜单对象,也就是子菜单
-				new com.yao.backstage.model.po.Resources()
-		}));
-		m.setResources(children1);  //同样资源和子菜单一个道理,不过一般情况下,在定义菜单的时候这些资源必须已经存在了,因为现有资源,才能定义菜单下有哪些资源
 		menuService.save(m);
 	}	
 	@Test
@@ -101,14 +96,7 @@ public class TestMenuService extends AbstractJUnit4SpringContextTests {
 		com.yao.backstage.model.po.Resources rs=new com.yao.backstage.model.po.Resources();
 		resourcesService.save(rs);
 		rs.setCode("asdsadad"); 
-		Set<Menu> menus = new HashSet<Menu>(Arrays.asList(new Menu[]{
-				new Menu(),
-				new Menu(),
-				new Menu(),
-				new Menu()
-		}));
-		rs.setMenus(menus);
-		rs.setModule("module");
+		rs.setModule(BackstageModule.product);
 		rs.setName("name");
 		rs.setUrl("url");
 		resourcesService.update(rs); 

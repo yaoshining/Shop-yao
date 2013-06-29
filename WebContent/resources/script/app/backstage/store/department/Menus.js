@@ -1,15 +1,15 @@
-Ext.define('BM.store.Menus', {
+Ext.define('BM.store.department.Menus', {
     extend: 'Ext.data.TreeStore',
     model: 'BM.model.Menu',
     autoLoad: true,
     root: {
     	id: 0,
-    	name: "Menu",
+    	text: "Menu",
         expanded: true
     },
 	proxy: {
 		type: "rest",
-		url: "backstage/menus",
+		url: "backstage/menus/department",
 		reader: {
 			type: "json"
 		},

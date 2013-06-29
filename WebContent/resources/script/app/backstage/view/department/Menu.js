@@ -5,7 +5,7 @@ Ext.define('BM.view.department.Menu',{
 	title: '部门管理',
     width: 200,
     height: 150,
-    store: 'Menus',
+    store: 'department.Menus',
     rootVisible: false,
     iconCls: 'dept',
     lines: false

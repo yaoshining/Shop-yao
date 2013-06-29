@@ -1,21 +1,18 @@
 package com.yao.backstage.model.po;
 
 import java.io.Serializable;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 import org.codehaus.jackson.annotate.JsonAutoDetect;
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
+
+import com.yao.data.enumeration.BackstageModule;
 
 @Entity
 @JsonAutoDetect
@@ -36,21 +33,22 @@ public class Resources implements Serializable {
 		/** 地址**/
 		private String url = "#";
 		/** 模块**/
-		private String module = "无";
+		@Enumerated(EnumType.STRING)
+		private BackstageModule module;
 		
-		/** 资源所属的菜单 **/
-		@ManyToMany(cascade={CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER)
-		@JoinTable(
-				name="menu_resource",
-				joinColumns={
-						@JoinColumn(name="menuId")
-				},
-				inverseJoinColumns={
-						@JoinColumn(name="resourceId")
-				}
-		)
-		@JsonIgnore
-		private Set<Menu> menus;
+//		/** 资源所属的菜单 **/
+//		@ManyToMany(cascade={CascadeType.MERGE,CascadeType.REFRESH},fetch=FetchType.EAGER)
+//		@JoinTable(
+//				name="menu_resource",
+//				joinColumns={
+//						@JoinColumn(name="menuId")
+//				},
+//				inverseJoinColumns={
+//						@JoinColumn(name="resourceId")
+//				}
+//		)
+//		@JsonIgnore
+//		private Set<Menu> menus;
 		private String icon;
 		private String iconCls;
 		@Transient
@@ -61,7 +59,7 @@ public class Resources implements Serializable {
 			this.code = code;
 		}
 		
-		public Resources(String code, String name, String url, String module) {
+		public Resources(String code, String name, String url, BackstageModule module) {
 			super();
 			this.code = code;
 			this.name = name;
@@ -93,17 +91,13 @@ public class Resources implements Serializable {
 		public void setUrl(String url) {
 			this.url = url;
 		}
-		public String getModule() {
+		
+		public BackstageModule getModule() {
 			return module;
 		}
-		public void setModule(String module) {
+
+		public void setModule(BackstageModule module) {
 			this.module = module;
-		}
-		public Set<Menu> getMenus() {
-			return menus;
-		}
-		public void setMenus(Set<Menu> menus) {
-			this.menus = menus;
 		}
 
 		public String getIcon() {
