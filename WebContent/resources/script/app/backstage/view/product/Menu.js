@@ -8,23 +8,5 @@ Ext.define('BM.view.product.Menu' ,{
     lines: false,
     store: 'product.Menus',
     rootVisible: false,
-    iconCls: 'nav',
-    listeners: {
-    	'itemclick': function(view,record,item,index,e){
-    		var url = record.get('url');
-    		if(url!="") {
-        		Ext.getCmp('contentTabPanel').add({
-                    title: record.get('text'),
-                    closable: true,
-                    autoScroll: true,
-                    icon: record.get('icon'),
-                    loader: {
-                    	url: url,
-                    	autoLoad: true
-                    }
-        		}).show();
-    		}
-    		//Ext.Msg.alert();
-    	}
-    }
+    iconCls: 'nav'
 });
