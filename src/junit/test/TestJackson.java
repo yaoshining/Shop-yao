@@ -10,7 +10,6 @@ import org.junit.Test;
 import com.yao.backstage.model.po.Menu;
 
 public class TestJackson {
-	@Test
 	public void test() {
 		Menu menu = new Menu();
 		ObjectMapper objectMapper = new ObjectMapper();
