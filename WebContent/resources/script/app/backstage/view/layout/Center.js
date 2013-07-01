@@ -6,6 +6,7 @@ Ext.define('BM.view.layout.Center',{
     region: 'center', // a center region is ALWAYS required for border layout
     deferredRender: false,
     activeTab: 0,     // first tab initially active
+    frame: true,
     items: [{
         contentEl: 'center1',
         title: 'Close Me',

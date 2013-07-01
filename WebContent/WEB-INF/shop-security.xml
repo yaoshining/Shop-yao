@@ -10,11 +10,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<intercept-url pattern="/backstage/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/access/login/backstage" username-parameter="userId" password-parameter="password" default-target-url="/backstage"  />
-		<logout logout-url="/logout" logout-success-url="/access/login/backstage" delete-cookies="JSESSIONID" />
-		<remember-me/>
-		<session-management>
-			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
-		</session-management>
+		<logout logout-url="/logout" logout-success-url="/access/login/backstage" delete-cookies="JSESSIONID" invalidate-session="true" />
+		<remember-me use-secure-cookie="false" />
 	</http>
 	<authentication-manager>
 		<authentication-provider>
