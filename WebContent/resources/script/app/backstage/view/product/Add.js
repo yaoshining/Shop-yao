@@ -10,9 +10,45 @@ Ext.define('BM.view.product.Add',{
     items: [{
     	xtype: 'form',
     	width: '100%',
+    	url: 'backstage/notebook',
     	border: false,
     	bodyPadding: 5,
     	width: '100%',
-    	html: 'asdasda'
+    	layout: 'anchor',
+    	defaultType: 'textfield',
+    	items: [
+    	    {fieldLabel: '商品名称',name:'name',allowBlank:false}
+    	],
+    	buttons: [
+    	    {
+    	    	text:'重置',
+    	    	handler: function() {
+    	    		this.up('form').getForm().reset();
+    	    	}
+    		},
+    		{
+    			text: 'Submit',
+    	        formBind: true,
+    	        disabled: true,
+    	        handler: function() {
+    	            var form = this.up('form').getForm();
+    	            if (form.isValid()) {
+    	            	var notebook = Ext.create('BM.model.Notebook',{
+    	            		id: 1,
+    	            		modelNumber: 'HGJG124234423'
+    	            	});
+    	            	notebook.save();
+//    	                form.submit({
+//    	                    success: function(form, action) {
+//    	                       Ext.Msg.alert('Success', action.result.msg);
+//    	                    },
+//    	                    failure: function(form, action) {
+//    	                        Ext.Msg.alert('Failed', action.result.msg);
+//    	                    }
+//    	                });
+    	            }
+    	        }
+    		}
+    	]
     }]
 });
