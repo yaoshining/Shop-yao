@@ -13,7 +13,7 @@ import com.yao.backstage.model.po.Notebook;
 import com.yao.backstage.service.product.NotebookService;
 
 @Controller
-@RequestMapping("/notebook")   //注意看路径,enb2
+@RequestMapping("/backstage/notebook")   //注意看路径,enb2
 public class NotebookController {
 	@Resource
 	private NotebookService notebookService;

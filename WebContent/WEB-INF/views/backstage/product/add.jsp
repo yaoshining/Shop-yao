@@ -7,7 +7,7 @@
 <title>添加商品</title>
 </head>
 <body>
-	<form action="/ShopYao/notebook" method="post">
+	<form action="backstage/notebook" method="post">
 		<input type="text" name="notebook" />
 		<input type="text" />
 		<input type="text" />
