@@ -20,8 +20,7 @@ public class NotebookController {
 	@RequestMapping(value={"","/save"},method=RequestMethod.POST)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void save(@RequestBody Notebook notebook) {   //现不写save了,因为json我们还没定义,先能访问把
-		System.out.println(notebook.getModelNumber());
-		//		notebookService.save(notebook);
+		notebookService.save(notebook);
 	}
 		
 }
