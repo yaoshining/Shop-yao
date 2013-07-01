@@ -6,17 +6,23 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/security
    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     <http pattern="/resources/**" security="none" />
-	<http auto-config="true">
-		<intercept-url pattern="/backstage/**" access="ROLE_ADMIN" />
+	<http use-expressions="true" auto-config="true">
+		<intercept-url pattern="/backstage/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/access/login/backstage" username-parameter="userId" password-parameter="password" default-target-url="/backstage"  />
-		<logout logout-url="/logout" logout-success-url="/access/login/backstage" />
+		<logout logout-url="/logout" logout-success-url="/access/login/backstage" delete-cookies="JSESSIONID" />
+		<remember-me/>
+		<session-management>
+			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+		</session-management>
 	</http>
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="yaoshining" password="yaoshining" authorities="ROLE_ADMIN"/>
+				<user name="yaoshining" password="yaoshining" authorities="ROLE_ADMIN" />
 				<user name="laixinglong" password="laixinglong" authorities="ROLE_ADMIN"/>
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+	<global-method-security secured-annotations="enabled" />
 </beans:beans>

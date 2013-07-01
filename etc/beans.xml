@@ -33,5 +33,4 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <import resource="shop-security.xml"/>
 </beans>
