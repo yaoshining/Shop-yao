@@ -3,6 +3,9 @@
 	<definition name="backstage/index" extends="blank">
 		<put-attribute name="main" type="template" value="/WEB-INF/views/backstage/index.jsp"/>
 	</definition>
+	<definition name="backstage/addProduct" extends="blank">
+		<put-attribute name="main" type="template" value="/WEB-INF/views/backstage/product/add.jsp"/>
+	</definition>
 	<definition name="backstage/login" extends="blank">
 		<put-attribute name="main" type="template" value="/WEB-INF/views/backstage/login.jsp"/>
 	</definition>

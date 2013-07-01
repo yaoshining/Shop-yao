@@ -13,4 +13,9 @@ public class BackstageController {
 		return "backstage/index"; 
 	}
 	
+	@RequestMapping(value={"/addProduct"},method=RequestMethod.GET)
+	public String addProduct() {
+		return "backstage/addProduct"; 
+	}
+	
 }
