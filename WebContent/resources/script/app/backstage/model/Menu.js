@@ -8,6 +8,7 @@ Ext.define('BM.model.Menu',{
 	     {name: 'leaf', type: 'bool', defaultValue: false},
 	     {name: 'expanded', type: 'bool', defaultValue: false},
 	     {name: 'loaded', type: 'bool', defaultValue: false},
-       	 {name: 'url', type: 'string', defaultValue: null},
+       	 {name: 'controller', type: 'string', defaultValue: null},
+       	 {name: 'view', type: 'string', defaultValue: null}
 	]
 });

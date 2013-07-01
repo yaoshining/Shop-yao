@@ -58,7 +58,9 @@ public class Menu implements Serializable {
 //	private Set<Resources> resources; 
 	private String icon;
 	private String iconCls;
-	private String url = "/index.jsp";
+	private String controller;
+	@Column(name="viewName")
+	private String view;
 	@Transient
 	private boolean leaf = false;
 	@Transient
@@ -131,11 +133,17 @@ public class Menu implements Serializable {
 	public void setModule(BackstageModule module) {
 		this.module = module;
 	}
-	public String getUrl() {
-		return url;
+	public String getController() {
+		return controller;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setController(String controller) {
+		this.controller = controller;
+	}
+	public String getView() {
+		return view;
+	}
+	public void setView(String view) {
+		this.view = view;
 	}
 	
 }

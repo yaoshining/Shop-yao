@@ -12,23 +12,22 @@ Ext.define('BM.controller.Menus',{
 		});
 	},
 	menuClick: function(view,record,item,index,e) {
-		var url = record.get('url');
-		var tab = Ext.getCmp(record.get('id'));
-		if(tab==undefined && url!="") {
-    		Ext.getCmp('contentTabPanel').add({
-    			id: record.get('id'),
-                title: record.get('text'),
-                closable: true,
-                autoScroll: true,
-                icon: record.get('icon'),
-                loader: {
-                	url: url,
-                	autoLoad: true
-                }
-    		}).show();
-		}else{
-			tab.show();
+		if(record.get('leaf')){
+			var controller = record.get('controller');
+			var tab = Ext.getCmp(record.get('id'));
+			if(!tab && controller) {
+				this.addController(controller);
+				Ext.getCmp('contentTabPanel').add({
+					id: record.get('id'),
+					xtype: record.get('view')
+				}).show();
+			}else if(controller!=""){
+				tab.show();
+			}
+			//Ext.Msg.alert();
 		}
-		//Ext.Msg.alert();
+	},
+	addController: function(controller) {
+		var c = this.application.getController(controller);
 	}
 });
