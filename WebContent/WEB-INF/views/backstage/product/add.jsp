@@ -8,12 +8,12 @@
 </head>
 <body>
 	<form action="backstage/notebook" method="post">
-		<input type="text" name="notebook" />
-		<input type="text" />
-		<input type="text" />
-		<input type="text" />
-		<input type="text" />
-		<input type="text" />
+		<input type="text" value="型号" name="notebook" />
+		<input type="text" value="品牌"/>
+		<input type="text" value="尺寸" />
+		<input type="text" value="颜色" />
+		<input type="text" value="上市时间" />
+		<input type="text" value="价格" />
 		<input type="submit" value="save" />
 	</form>
 </body>
