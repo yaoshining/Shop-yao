@@ -197,6 +197,10 @@ div.ux-taskbar div.x-toolbar {
     background-image: url(../../../images/desktop/grid48x48.png);
 }
 
+.shop-shortcut {
+    background-image: url(../../../images/desktop/shop-management.png);
+}
+
 .notepad-shortcut {
     background-image: url(../../../images/desktop/notepadLarge.png);
     width: 46px;

@@ -1,6 +1,6 @@
 Ext.define('BM.view.layout.North',{
 	extend: 'Ext.Component',
-	alias: 'widget.north',
+	alias: 'widget.shopnorth',
 	
 	region: 'north',
     height: 32, // give north and south regions a height

@@ -14,6 +14,7 @@ Ext.define('MyDesktop.App', {
         'MyDesktop.Notepad',
         'MyDesktop.BogusMenuModule',
         'MyDesktop.BogusModule',
+        'MyDesktop.ShopManagement',
 
 //        'MyDesktop.Blockalanche',
         'MyDesktop.Settings'
@@ -37,7 +38,8 @@ Ext.define('MyDesktop.App', {
             new MyDesktop.AccordionWindow(),
             new MyDesktop.Notepad(),
             new MyDesktop.BogusMenuModule(),
-            new MyDesktop.BogusModule()
+            new MyDesktop.BogusModule(),
+            new MyDesktop.ShopManagement()
         ];
     },
 
@@ -54,6 +56,7 @@ Ext.define('MyDesktop.App', {
             shortcuts: Ext.create('Ext.data.Store', {
                 model: 'Ext.ux.desktop.ShortcutModel',
                 data: [
+                    { name: '商城后台管理系统', iconCls: 'shop-shortcut', module: 'shop-mgt' },
                     { name: '列表窗口', iconCls: 'grid-shortcut', module: 'grid-win' },
                     { name: 'QQ', iconCls: 'accordion-shortcut', module: 'acc-win' },
                     { name: '记事本', iconCls: 'notepad-shortcut', module: 'notepad' },

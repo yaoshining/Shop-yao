@@ -1,6 +1,6 @@
 Ext.define('BM.view.layout.East',{
 	extend: 'Ext.tab.Panel',
-	alias: 'widget.east',
+	alias: 'widget.shopeast',
 	
     region: 'east',
     title: '属性',

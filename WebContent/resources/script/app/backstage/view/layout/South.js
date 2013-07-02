@@ -1,6 +1,6 @@
 Ext.define('BM.view.layout.South',{
 	extend: 'Ext.panel.Panel',
-	alias: 'widget.south',
+	alias: 'widget.shopsouth',
 	
 	// lazily created panel (xtype:'panel' is default)
     region: 'south',

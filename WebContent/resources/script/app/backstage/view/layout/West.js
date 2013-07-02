@@ -1,6 +1,6 @@
 Ext.define('BM.view.layout.West',{
 	extend: 'Ext.panel.Panel',
-	alias: 'widget.west',
+	alias: 'widget.shopwest',
 	
 	region: 'west',
     stateId: 'navigation-panel',
