@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商城后台管理系统</title>
 <link rel="stylesheet" href="resources/css/extjs/ext-all-neptune.css" media="screen" />
+<link rel="stylesheet" href="resources/css/extjs/ux/GroupTabPanel.css" media="screen" />
+<link rel="stylesheet" href="resources/css/extjs/ux/desktop.css" media="screen" />
 <style>
 <!--
 /** message style **/
@@ -122,6 +124,9 @@ p {
 <script type="text/javascript" src="resources/script/extjs/ext-debug.js"></script>
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = '正在载入图形化界面组件...';</script>
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = '初始化...';</script>
-<script type="text/javascript" src="resources/script/app/backstage.js"></script>
+<!-- script type="text/javascript" src="resources/script/app/backstage.js"></script-->
+<script type="text/javascript" src="resources/script/app/DesktopApp.js"></script>
+<script type="text/javascript">
+</script>
 </body>
 </html>

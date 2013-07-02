@@ -1,34 +1,15 @@
+Ext.Loader.setPath({
+    MyDesktop: 'resources/script/app/desktop'
+});
 Ext.application({
     requires: [
-       	'Ext.container.Viewport',
-    	'Ext.window.MessageBox',
-    	'Ext.data.Model',
-    	'Ext.data.proxy.Rest',
-    	'Ext.ux.TabCloseMenu',
-    	'Ext.ux.GroupTabPanel'
+         'MyDesktop.App' 
     ],
     name: 'BM',
 
     appFolder: 'resources/script/app/backstage',
-    controllers: ['Layout','Menus'],
     launch: function() {
-        Ext.create('Ext.container.Viewport', {
-        	id: 'backage-center',
-            layout: 'border',
-            items: [
-                {
-                	xtype: 'north'
-                },{
-                    xtype: 'south'
-                },{
-                    xtype: 'east'
-                },{
-                    xtype: 'west'
-                },{
-                	xtype: 'center'
-                }
-            ]
-        });
+    	var myDesktop = new MyDesktop.App();
         var hideMask = function () {
 		    Ext.get('loading').remove();
 		    Ext.fly('loading-mask').animate({
