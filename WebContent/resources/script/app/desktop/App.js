@@ -61,8 +61,8 @@ Ext.define('MyDesktop.App', {
                 ]
             }),
 
-            wallpaper: 'wallpapers/Blue-Sencha.jpg',
-            wallpaperStretch: false
+            wallpaper: 'resources/images/desktop/wallpapers/jbossas7.jpg',
+            wallpaperStretch: true
         });
     },
 
@@ -71,7 +71,7 @@ Ext.define('MyDesktop.App', {
         var me = this, ret = me.callParent();
 
         return Ext.apply(ret, {
-            title: 'Don Griffin',
+            title: '姚世宁',
             iconCls: 'user',
             height: 300,
             toolConfig: {

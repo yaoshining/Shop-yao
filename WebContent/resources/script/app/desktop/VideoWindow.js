@@ -22,7 +22,7 @@ Ext.define('MyDesktop.VideoWindow', {
 
     init : function(){
         this.launcher = {
-            text: '关于Ext JS',
+            text: '视频窗口',
             iconCls:'video'
         }
     },
@@ -34,7 +34,7 @@ Ext.define('MyDesktop.VideoWindow', {
         if (!win) {
             win = desktop.createWindow({
                 id: me.windowId,
-                title: 'About Ext JS',
+                title: '视频窗口',
                 width: 740,
                 height: 480,
                 iconCls: 'video',
