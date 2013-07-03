@@ -17,7 +17,8 @@ Ext.define('MyDesktop.App', {
         'MyDesktop.ShopManagement',
 
 //        'MyDesktop.Blockalanche',
-        'MyDesktop.Settings'
+        'MyDesktop.Settings',
+        'MyDesktop.Music'
     ],
 
     init: function() {
@@ -39,7 +40,8 @@ Ext.define('MyDesktop.App', {
             new MyDesktop.Notepad(),
             new MyDesktop.BogusMenuModule(),
             new MyDesktop.BogusModule(),
-            new MyDesktop.ShopManagement()
+            new MyDesktop.ShopManagement(),
+            new MyDesktop.Music(),
         ];
     },
 
@@ -60,7 +62,8 @@ Ext.define('MyDesktop.App', {
                     { name: '列表窗口', iconCls: 'grid-shortcut', module: 'grid-win' },
                     { name: 'QQ', iconCls: 'accordion-shortcut', module: 'acc-win' },
                     { name: '记事本', iconCls: 'notepad-shortcut', module: 'notepad' },
-                    { name: '系统状态', iconCls: 'cpu-shortcut', module: 'systemstatus'}
+                    { name: '系统状态', iconCls: 'cpu-shortcut', module: 'systemstatus'},
+                    { name: '音乐', iconCls: 'cpu-shortcut', module: 'music'}
                 ]
             }),
 
