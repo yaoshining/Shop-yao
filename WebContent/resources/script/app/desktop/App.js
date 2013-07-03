@@ -63,7 +63,7 @@ Ext.define('MyDesktop.App', {
                     { name: 'QQ', iconCls: 'accordion-shortcut', module: 'acc-win' },
                     { name: '记事本', iconCls: 'notepad-shortcut', module: 'notepad' },
                     { name: '系统状态', iconCls: 'cpu-shortcut', module: 'systemstatus'},
-                    { name: '音乐', iconCls: 'cpu-shortcut', module: 'music'}
+                    { name: '音乐', iconCls: 'music-shortcut', module: 'music'}
                 ]
             }),
 

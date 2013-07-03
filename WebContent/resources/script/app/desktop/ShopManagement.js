@@ -28,7 +28,8 @@ Ext.define('MyDesktop.ShopManagement', {
             	layout: 'border',
             	width: 1000,
             	height: 600,
-            	title: '<div style="text-align:center">商城后台管理系统</div>',
+            	title: '商城后台管理系统',
+            	iconCls: 'computer',
             	items: [
             	    {
 	                    xtype: 'shopsouth'

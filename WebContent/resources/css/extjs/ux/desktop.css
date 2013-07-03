@@ -201,6 +201,10 @@ div.ux-taskbar div.x-toolbar {
     background-image: url(../../../images/desktop/shop-management.png);
 }
 
+.music-shortcut {
+    background-image: url(../../../images/desktop/music48x48.png);
+}
+
 .notepad-shortcut {
     background-image: url(../../../images/desktop/notepadLarge.png);
     width: 46px;
@@ -237,6 +241,14 @@ div.ux-taskbar div.x-toolbar {
 
 .notepad {
     background-image: url( ../../../images/desktop/bogus.png ) !important;
+}
+
+.computer {
+    background-image: url( ../../../images/icons/computer.png ) !important;
+}
+
+.music {
+    background-image: url( ../../../images/icons/music16x16.png ) !important;
 }
 
 .logout {

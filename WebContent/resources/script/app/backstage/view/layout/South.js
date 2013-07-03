@@ -1,10 +1,9 @@
 Ext.define('BM.view.layout.South',{
+	id: 'shopsouth',
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.shopsouth',
 	
-	// lazily created panel (xtype:'panel' is default)
     region: 'south',
-    contentEl: 'south',
     split: true,
     height: 100,
     minSize: 100,

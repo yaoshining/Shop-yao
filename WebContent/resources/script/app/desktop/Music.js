@@ -29,7 +29,7 @@ Ext.define('MyDesktop.Music', {
                 title:'音乐',
                 width:245,
                 height:350,
-                iconCls: 'notepad',
+                iconCls: 'music',
                 animCollapse:false,
                 border: false,
                 //defaultFocus: 'notepad-editor', EXTJSIV-1300

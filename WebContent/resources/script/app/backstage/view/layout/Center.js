@@ -8,11 +8,11 @@ Ext.define('BM.view.layout.Center',{
     activeTab: 0,     // first tab initially active
     frame: true,
     items: [{
-        contentEl: 'center1',
         title: 'Close Me',
         closable: true,
         autoScroll: true,
-        iconCls: 'nav'
+        iconCls: 'nav',
+        html: 'asdasdas'
     }],
     plugins: Ext.create('Ext.ux.TabCloseMenu', {
         extraItemsTail: [
