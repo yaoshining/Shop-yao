@@ -89,7 +89,7 @@
 	    </property>
 	</bean>
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
-	<context:component-scan base-package="com.yao"></context:component-scan>
+	<context:component-scan base-package="com.yao.**.controller"></context:component-scan>
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/test"/>

@@ -34,7 +34,6 @@ Ext.define('BM.view.product.Add',{
     	            var form = this.up('form').getForm();
     	            if (form.isValid()) {
     	            	var notebook = Ext.create('BM.model.Notebook',{
-    	            		id: 1,
     	            		modelNumber: 'HGJG124234423'
     	            	});
     	            	notebook.save();
