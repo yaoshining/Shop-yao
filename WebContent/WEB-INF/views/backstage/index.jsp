@@ -126,6 +126,7 @@ p {
 <script type="text/javascript">document.getElementById('loading-msg').innerHTML = '初始化...';</script>
 <!-- script type="text/javascript" src="resources/script/app/backstage.js"></script-->
 <script type="text/javascript" src="resources/script/app/DesktopApp.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 </script>
 </body>

@@ -173,10 +173,10 @@ Ext.define('Ext.window.MessageBox', {
      *     Ext.window.MessageBox.buttonText.yes = "oui"; //french
      */
     buttonText: {
-        ok: 'OK',
-        yes: 'Yes',
-        no: 'No',
-        cancel: 'Cancel'
+        ok: '好的',
+        yes: '是',
+        no: '否',
+        cancel: '取消'
     },
     //</locale>
 
