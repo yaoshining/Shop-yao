@@ -9,15 +9,27 @@ Ext.define('BM.view.product.Add',{
     iconCls: '',
     items: [{
     	xtype: 'form',
-    	width: '100%',
     	url: 'backstage/notebook',
     	border: false,
-    	bodyPadding: 5,
+    	bodyPadding: '10 100',
     	width: '100%',
-    	layout: 'anchor',
+    	layout: 'form',
     	defaultType: 'textfield',
+    	buttonAlign: 'center',
     	items: [
-    	    {fieldLabel: '商品名称',name:'name',allowBlank:false}
+    	    {fieldLabel: '商品名称',name:'name',allowBlank:false},
+    	    {fieldLabel: '型号',name:'modelNumber',allowBlank:false},
+    	    {fieldLabel: '品牌',name:'brand',allowBlank:false},
+    	    {fieldLabel: '尺寸',name:'size',allowBlank:false},
+    	    {
+    	    	xtype:'colorfield',
+    	    	fieldLabel: '颜色',
+    	    	name:'colour',
+    	    	allowBlank:false
+    	    },
+    	    {xtype:'datefield',fieldLabel: '上市时间',name:'timeToMarket',allowBlank:false},
+    	    {fieldLabel: '价格',name:'price',allowBlank:false},
+    	    {fieldLabel: '操作系统',name:'operatingSystem',allowBlank:false}
     	],
     	buttons: [
     	    {
@@ -27,7 +39,7 @@ Ext.define('BM.view.product.Add',{
     	    	}
     		},
     		{
-    			text: 'Submit',
+    			text: '新建',
     	        formBind: true,
     	        disabled: true,
     	        handler: function() {
