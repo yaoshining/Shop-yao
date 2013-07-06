@@ -42,7 +42,7 @@ public class Notebook implements Serializable{
 	@Column(nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	/** 上市时间**/
-	private Date timeToMarket;
+	private Date timeToMarket;	
 		
 	@Column(nullable=true)
 	/**价格**/
