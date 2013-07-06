@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="resources/css/music.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+<div id="jquery_jplayer"></div>
+<!-- Using the cssSelectorAncestor option with the default cssSelector class names to enable control association of standard functions using built in features -->
+<div id="jp_container" class="demo-container">
+	<ul>
+		<li><span>选择一首歌 : </span></li>
+		<li><a href="http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3" class="track track-default">Cro Magnon Man</a></li>
+		<li> | </li>
+		<li><a href="http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3" class="track">The Separation</a></li>
+		<li> | </li>
+		<li><a href="http://www.jplayer.org/audio/mp3/Miaow-04-Lismore.mp3" class="track">Lismore</a></li>
+		<li> | </li>
+		<li><a href="http://www.jplayer.org/audio/mp3/Miaow-10-Thin-ice.mp3" class="track">Thin Ice</a></li>
+	</ul>
+	<p>
+		<span class="play-state"></span> :
+		<span class="track-name">没有选择</span>
+		播放了 <span class="extra-play-info"></span>
+		总共 <span class="jp-duration"></span>, 已播放
+		<span class="jp-current-time"></span>
+	</p>
+	<ul>
+		<li><a class="jp-play" href="#">播放</a></li>
+		<li><a class="jp-pause" href="#">暂停</a></li>
+		<li><a class="jp-stop" href="#">停止</a></li>
+	</ul>
+	<ul>
+		<li>音量 :</li>
+		<li><a class="jp-mute" href="#">静音</a></li>
+		<li><a class="jp-unmute" href="#">取消静音</a></li>
+		<li> <a class="jp-volume-bar" href="#">|&lt;----------&gt;|</a></li>
+		<li><a class="jp-volume-max" href="#">最大</a></li>
+	</ul>
+</div>
+</body>
+</html>
