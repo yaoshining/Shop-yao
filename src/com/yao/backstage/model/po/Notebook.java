@@ -21,7 +21,8 @@ public class Notebook implements Serializable{
 	@Id   //主键不能写column了
 	@GeneratedValue
 	private int id; 
-	
+	/** 商品名称 **/
+	private String name;
 	/**型号**/
 	@Column(nullable=true)
 	private String modelNumber;
@@ -41,7 +42,7 @@ public class Notebook implements Serializable{
 	@Column(nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	/** 上市时间**/
-	private Date timeToMarket;
+	private Date timeToMarket;	
 		
 	@Column(nullable=true)
 	/**价格**/
@@ -116,6 +117,14 @@ public class Notebook implements Serializable{
 
 	public void setModelNumber(String modelNumber) {
 		this.modelNumber = modelNumber;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
