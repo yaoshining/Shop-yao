@@ -21,7 +21,7 @@
 }
 
 .demo-container li {
-	margin-right:1em;
+	margin:0 1em;
 }
 .demo-container .jp-artist {
 	float: right;
