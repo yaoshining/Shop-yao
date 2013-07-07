@@ -44,26 +44,10 @@
 	</div>
 	<div id="jquery_jplayer">
 	</div>
-<!-- 	<img id="jp_poster" style="width: 280px; height: 170px; display: block;" src="http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"> -->
-<!-- 	<div class="jp-title">title</div> -->
-<!-- 	<div class="jp-playlist"> -->
-<!-- 		<ul> -->
-<!-- 			<li>asdaads</li> -->
-<!-- 		</ul> -->
-<!-- 	</div> -->
 <!-- 	<div class="jp-shuffle">随机播放</div> -->
 <!-- 	<div class="jp-shuffle-off">关闭随机播放</div> -->
 <!-- 	<div class="jp-repeat">循环</div> -->
 <!-- 	<div class="jp-repeat-off">取消循环</div> -->
-<!-- 	<div class="jp-progress"> -->
-<!-- 		<div class="jp-seek-bar" style="width: 100%;height: 20px;background-color: #999;"> -->
-<!-- 			<div class="jp-play-bar" style="width: 0%;background-color: yellow;height: 20px;"></div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- 	<p> -->
-<!-- 		总共 <span class="jp-duration"></span>, 已播放 -->
-<!-- 		<span class="jp-current-time"></span> -->
-<!-- 	</p> -->
 <!-- 	<ul> -->
 <!-- 		<li><a class="jp-stop" href="#">停止</a></li> -->
 <!-- 	</ul> -->
@@ -85,7 +69,13 @@
 			</div>
 		</div>
 	</div>
-	<div id="player-bottom" style="height: 26px;width: 100%;background: url('resources/images/desktop/music/toolbar.png') repeat-x;position: absolute;bottom: 0px;"></div>
+	<div id="player-bottom" style="height: 26px;width: 100%;background: url('resources/images/desktop/music/toolbar.png') repeat-x;position: absolute;bottom: 0px;">
+		<div id="player-statistics" style="width: 170px;margin: 0px auto;height: 26px; text-align: center;line-height: 26px;">
+			<span class="totalSong">6 首歌</span>,
+			<span class="totalTime">25 分钟</span>,
+			<span class="totalSize">34 MB</span>
+		</div>
+	</div>
 </div>
 </body>
 </html>

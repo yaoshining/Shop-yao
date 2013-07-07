@@ -67,6 +67,7 @@ var poster = $("#player-poster");
 var posterHeader = $("#player-post-header");
 var playerStatus = $("#player-status");
 var playlist = $("#player-playlist");
+var playerStatistics = $("#player-statistics");
 var extWindow = Ext.getCmp('music');
 volumeBall.draggable({
 	axis: 'x',
@@ -89,6 +90,15 @@ extWindow.on('afterlayout',function(){
 extWindow.on('resize',function(){
 	resizeContent();
 });
+var updatePlaylistInfo = function(){
+	var totalSong = myPlaylist.playlist.length;
+	if(totalSong<1){
+		playerStatistics.hide();
+		return;
+	}
+	playerStatistics.find(".totalSong").text(totalSong+" 首歌");
+	playerStatistics.show();
+};
 var myPlaylist = new jPlayerPlaylist({
 	jPlayer: "#jquery_jplayer",
 	cssSelectorAncestor: "#jp_container"
@@ -177,5 +187,6 @@ var myPlaylist = new jPlayerPlaylist({
 		var volumePct = event.jPlayer.options.volume;
 		var left = (volumeBall.parent().width()-14)*volumePct;
 		volumeBall.css("left",left);
+		updatePlaylistInfo();
 	}
 });
