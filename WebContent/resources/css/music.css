@@ -5,7 +5,7 @@
 }
 
 .demo-container a, .demo-container a:link, .demo-container a:visited, .demo-container a:hover, .demo-container a:focus, .demo-container a:active {
-	color: #009BE3;
+	color: rgb(120,120,120);
 }
 
 .demo-container ul {
@@ -30,8 +30,9 @@
 .demo-container li.jp-playlist-current {
 	background: url("resources/images/desktop/music/left_menu.png");
 }
-.demo-container p span.track-name {
-	color: #CC0090;
+.demo-container .jp-playlist-item {
+	color: rgb(120,120,120);
+	font-size: 12px;
 }
 .demo-container .jp-play:hover {
 	background: url("../images/desktop/music/play-focus.png");
