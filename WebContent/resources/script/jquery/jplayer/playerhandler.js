@@ -64,6 +64,8 @@ var content = $("#player-content");
 var bottom = $("#player-bottom");
 var menu = $("#player-menu");
 var poster = $("#player-poster");
+var posterHeader = $("#player-post-header");
+var playerStatus = $("#player-status");
 var playlist = $("#player-playlist");
 var extWindow = Ext.getCmp('music');
 volumeBall.draggable({
@@ -78,7 +80,7 @@ volumeBall.draggable({
 var resizeContent = function(){
 	var contentHeight = extWindow.getHeight()-extWindow.getHeader().getHeight()-header.height()-bottom.height();
 	content.height(contentHeight);
-	var playlistWidth = content.width()-menu.width();
+	var playlistWidth = content.width()-menu.width()-parseInt(menu.css('border-right-width'));
 	playlist.width(playlistWidth);
 }
 extWindow.on('afterlayout',function(){
@@ -153,6 +155,15 @@ var myPlaylist = new jPlayerPlaylist({
 		poster.css("background-image","url('"+posterUrl+"')");
 		$(".detail-title").text(title);
 		$(".detail-artist").text(artist);
+		playerStatus.text("Now Playing");
+		posterHeader.find(".jp-current-time").show();
+	},
+	pause: function(event){
+		playerStatus.text("Paused");
+		posterHeader.find(".jp-current-time").hide();
+	},
+	stop: function(event){
+		playerStatus.text("Nothing Playing");
 	},
 	volumechange: function(event){
 		var left = 0;

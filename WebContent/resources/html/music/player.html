@@ -68,13 +68,15 @@
 <!-- 		<li><a class="jp-stop" href="#">停止</a></li> -->
 <!-- 	</ul> -->
 	<div id="player-content" style="width: 100%;">
-		<div id="player-menu" style="float: left;width: 144px;background: url('resources/images/desktop/music/left_menu.png');height: 100%;display: inline-block;position: relative;">
+		<div id="player-menu" style="float: left;width: 144px;background: url('resources/images/desktop/music/left_menu.png');height: 100%;display: inline-block;position: relative;border-right: 1px solid #000;">
 			<div style="width: 144px;height: 163px;position: absolute;bottom: 0px;">
-				<div id="player-post-header" style="width: 144px;height: 19px;background: url('resources/images/desktop/music/poster_header.png') repeat-x;"></div>
-				<div id="player-poster" style="width: 144px;height: 144px;background: url('resources/images/desktop/music/poster.png') no-repeat;background-size: contain;">
+				<div id="player-post-header" style="width: 144px;height: 19px;background: url('resources/images/desktop/music/poster_header.png') repeat-x;border-right: 1px solid #000;line-height: 19px;text-align: center;color: rgb(120,120,120);font-size: 11px;">
+					<span id="player-status">Nothing Playing</span><span class="jp-current-time" style="margin-left: 5px;display: none;">3:14</span>
+				</div>
+				<div id="player-poster" style="width: 144px;height: 144px;background: url('resources/images/desktop/music/poster.png') no-repeat;background-size: contain;border-right: 1px solid #000;">
 				</div>
 			</div>
-			</div>
+		</div>
 		<div id="player-playlist" style="float: left;background: url('resources/images/desktop/music/playlist.png');height: 100%;display: inline-block;">
 			<div class="jp-playlist">
 				<ul>
