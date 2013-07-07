@@ -1,40 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-<link href="resources/css/music.css" rel="stylesheet" media="screen" />
-</head>
 <body>
-<div id="jquery_jplayer"></div>
 <!-- Using the cssSelectorAncestor option with the default cssSelector class names to enable control association of standard functions using built in features -->
 <div id="jp_container" class="demo-container">
-	<ul>
-		<li><span>选择一首歌 : </span></li>
-		<li><a href="http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3" class="track track-default">Cro Magnon Man</a></li>
-		<li> | </li>
-		<li><a href="http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3" class="track">The Separation</a></li>
-		<li> | </li>
-		<li><a href="http://www.jplayer.org/audio/mp3/Miaow-04-Lismore.mp3" class="track">Lismore</a></li>
-		<li> | </li>
-		<li><a href="http://www.jplayer.org/audio/mp3/Miaow-10-Thin-ice.mp3" class="track">Thin Ice</a></li>
-	</ul>
+	<div style="width: 100%;height: 48px;background: url('resources/images/desktop/music/header.png') repeat-x;padding: 0px 10px;">
+		<div style="width: 28%;height: 100%;float: left;display: inline-block;">
+			<div style="width: 91px;height: 22px;margin-top: 13px;display: inline-block;">
+				<div style="width: 91px;height: 22px;display: inline-block;">
+					<div class="jp-previous" style="background: url('resources/images/desktop/music/player_button1.png') no-repeat;width: 30px;height: 22px;display: inline-block;float: left;"></div>
+					<div class="jp-play" style="background: url('resources/images/desktop/music/player_button1.png') -30px no-repeat;width: 30px;height: 22px;display: inline-block;float: left;"></div>
+					<div class="jp-pause" style="background: url('resources/images/desktop/music/pause.png') no-repeat;width: 30px;height: 22px;display: inline-block;float: left;display: none;"></div>
+					<div class="jp-next" style="background: url('resources/images/desktop/music/player_button1.png') -60px no-repeat;width: 31px;height: 22px;display: inline-block;float: left;"></div>
+				</div>
+			</div>
+			<div style="width: 120px;height: 19px;margin-top: 12px;margin-left:10px;display: inline-block;">
+				<div class="jp-mute" style="background: url('resources/images/desktop/music/volume3.png') no-repeat;width: 20px;height: 19px;display: inline-block;float: left;"></div>
+				<div class="jp-unmute" style="background: url('resources/images/desktop/music/volume3.png') no-repeat;width: 20px;height: 19px;display: inline-block;float: left;display: none;"></div>
+				<div style="background: url('resources/images/desktop/music/volume3.png') -20px 0px no-repeat;width: 75px;height: 19px;display: inline-block;float: left;position: relative;">
+					<div class="volume-ball" style="background: url('resources/images/desktop/music/volume_btn.png');width: 14px;height: 14px;display: inline-block;position: absolute;left: 1px;top: 2px;z-index: 2;"></div>
+					<div class="jp-volume-bar" style="width: 62px;height: 14px;display: inline-block;left: 6px;top: 3px;position: absolute;">
+						<div class="jp-volume-bar-value" style="height: 100%;background: url('resources/images/desktop/music/volume_back.png') repeat-x;"></div>
+					</div>
+				</div>
+				<div class="jp-volume-max" style="background: url('resources/images/desktop/music/volume3.png') -95px 0px no-repeat;width: 25px;height: 19px;display: inline-block;float: left;"></div>
+			</div>
+		</div>
+		<div style="width: 44%;height: 40px;background: url('resources/images/desktop/music/info.png') repeat-x;display: inline-block;margin-top: 4px;float: left;">
+			<div style="width: 86%;height: 100%;margin: 0px auto;padding: 2px;">
+				<div style="text-align: center;">
+					<div class="detail-title" style="color: rgb(178,131,87);font-size: 12px;line-height: 12px;">asdasdasdad</div>
+					<div class="detail-artist" style="font-size: 10px;color: rgb(100,64,64);line-height: 10px;">asdasdads</div>
+				</div>
+				<div class="jp-duration" style="width: 9%;display: inline-block;float: left;color: rgb(120,120,120);font-size: 8px;text-align: center;">asdasd</div>
+				<div class="jp-progress" style="width:82%;display: inline-block;float: left;">
+					<div class="jp-seek-bar" style="width: 80%;height: 8px;background: url('resources/images/desktop/music/seekbar.png') repeat-x;">
+						<div class="jp-play-bar" style="width: 0%;background-color: yellow;height: 8px;"></div>
+					</div>
+				</div>
+				<div class="jp-current-time" style="width: 9%;display: inline-block;float: left;color: rgb(120,120,120);font-size: 8px;text-align: center;">sdfsdfsd</div>
+			</div>
+		</div>
+		<div style="width: 28%;height: 100%;float: left;display: inline-block;"></div>
+	</div>
+	<div id="jquery_jplayer">
+	</div>
+	<img id="jp_poster" style="width: 280px; height: 170px; display: block;" src="http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png">
+	<div class="jp-title">title</div>
+	<div class="jp-playlist">
+		<ul>
+			<li>asdaads</li>
+		</ul>
+	</div>
+	<div class="jp-shuffle">随机播放</div>
+	<div class="jp-shuffle-off">关闭随机播放</div>
+	<div class="jp-repeat">循环</div>
+	<div class="jp-repeat-off">取消循环</div>
+	<div class="jp-progress">
+		<div class="jp-seek-bar" style="width: 100%;height: 20px;background-color: #999;">
+			<div class="jp-play-bar" style="width: 0%;background-color: yellow;height: 20px;"></div>
+		</div>
+	</div>
 	<p>
-		<span class="play-state"></span> :
-		<span class="track-name">没有选择</span>
-		播放了 <span class="extra-play-info"></span>
 		总共 <span class="jp-duration"></span>, 已播放
 		<span class="jp-current-time"></span>
 	</p>
 	<ul>
-		<li><a class="jp-play" href="#">播放</a></li>
-		<li><a class="jp-pause" href="#">暂停</a></li>
 		<li><a class="jp-stop" href="#">停止</a></li>
-	</ul>
-	<ul>
-		<li>音量 :</li>
-		<li><a class="jp-mute" href="#">静音</a></li>
-		<li><a class="jp-unmute" href="#">取消静音</a></li>
-		<li> <a class="jp-volume-bar" href="#">|&lt;----------&gt;|</a></li>
-		<li><a class="jp-volume-max" href="#">最大</a></li>
 	</ul>
 </div>
 </body>

@@ -1,6 +1,6 @@
 .demo-container {
 	border: 1px solid #009BE3;
-	padding:0 20px;
+	padding:0px;
 	font-family: "Myriad Pro Regular","Trebuchet MS";
 }
 
@@ -27,4 +27,7 @@
 
 .demo-container p span.track-name {
 	color: #CC0090;
+}
+.demo-container .jp-play:hover {
+	background: url("../images/desktop/music/play-focus.png");
 }
