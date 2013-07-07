@@ -165,15 +165,15 @@ var myPlaylist = new jPlayerPlaylist({
 		poster.css("background-image","url('"+posterUrl+"')");
 		$(".detail-title").text(title);
 		$(".detail-artist").text(artist);
-		playerStatus.text("Now Playing");
+		playerStatus.text("正在播放");
 		posterHeader.find(".jp-current-time").show();
 	},
 	pause: function(event){
-		playerStatus.text("Paused");
+		playerStatus.text("暂停");
 		posterHeader.find(".jp-current-time").hide();
 	},
 	stop: function(event){
-		playerStatus.text("Nothing Playing");
+		playerStatus.text("没有播放");
 	},
 	volumechange: function(event){
 		var left = 0;
