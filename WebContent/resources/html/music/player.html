@@ -3,7 +3,7 @@
 <body>
 <!-- Using the cssSelectorAncestor option with the default cssSelector class names to enable control association of standard functions using built in features -->
 <div id="jp_container" class="demo-container">
-	<div style="width: 100%;height: 48px;background: url('resources/images/desktop/music/header.png') repeat-x;padding: 0px 10px;">
+	<div id="player-header" style="width: 100%;height: 48px;background: url('resources/images/desktop/music/header.png') repeat-x;padding: 0px 10px;">
 		<div style="width: 28%;height: 100%;float: left;display: inline-block;">
 			<div style="width: 91px;height: 22px;margin-top: 13px;display: inline-block;">
 				<div style="width: 91px;height: 22px;display: inline-block;">
@@ -44,29 +44,46 @@
 	</div>
 	<div id="jquery_jplayer">
 	</div>
-	<img id="jp_poster" style="width: 280px; height: 170px; display: block;" src="http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png">
-	<div class="jp-title">title</div>
-	<div class="jp-playlist">
-		<ul>
-			<li>asdaads</li>
-		</ul>
-	</div>
-	<div class="jp-shuffle">随机播放</div>
-	<div class="jp-shuffle-off">关闭随机播放</div>
-	<div class="jp-repeat">循环</div>
-	<div class="jp-repeat-off">取消循环</div>
-	<div class="jp-progress">
-		<div class="jp-seek-bar" style="width: 100%;height: 20px;background-color: #999;">
-			<div class="jp-play-bar" style="width: 0%;background-color: yellow;height: 20px;"></div>
+<!-- 	<img id="jp_poster" style="width: 280px; height: 170px; display: block;" src="http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"> -->
+<!-- 	<div class="jp-title">title</div> -->
+<!-- 	<div class="jp-playlist"> -->
+<!-- 		<ul> -->
+<!-- 			<li>asdaads</li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+<!-- 	<div class="jp-shuffle">随机播放</div> -->
+<!-- 	<div class="jp-shuffle-off">关闭随机播放</div> -->
+<!-- 	<div class="jp-repeat">循环</div> -->
+<!-- 	<div class="jp-repeat-off">取消循环</div> -->
+<!-- 	<div class="jp-progress"> -->
+<!-- 		<div class="jp-seek-bar" style="width: 100%;height: 20px;background-color: #999;"> -->
+<!-- 			<div class="jp-play-bar" style="width: 0%;background-color: yellow;height: 20px;"></div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<p> -->
+<!-- 		总共 <span class="jp-duration"></span>, 已播放 -->
+<!-- 		<span class="jp-current-time"></span> -->
+<!-- 	</p> -->
+<!-- 	<ul> -->
+<!-- 		<li><a class="jp-stop" href="#">停止</a></li> -->
+<!-- 	</ul> -->
+	<div id="player-content" style="width: 100%;">
+		<div id="player-menu" style="float: left;width: 144px;background: url('resources/images/desktop/music/left_menu.png');height: 100%;display: inline-block;position: relative;">
+			<div style="width: 144px;height: 163px;position: absolute;bottom: 0px;">
+				<div id="player-post-header" style="width: 144px;height: 19px;background: url('resources/images/desktop/music/poster_header.png') repeat-x;"></div>
+				<div id="player-poster" style="width: 144px;height: 144px;background: url('resources/images/desktop/music/poster.png') no-repeat;background-size: contain;">
+				</div>
+			</div>
+			</div>
+		<div id="player-playlist" style="float: left;background: url('resources/images/desktop/music/playlist.png');height: 100%;display: inline-block;">
+			<div class="jp-playlist">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-	<p>
-		总共 <span class="jp-duration"></span>, 已播放
-		<span class="jp-current-time"></span>
-	</p>
-	<ul>
-		<li><a class="jp-stop" href="#">停止</a></li>
-	</ul>
+	<div id="player-bottom" style="height: 26px;width: 100%;background: url('resources/images/desktop/music/toolbar.png') repeat-x;position: absolute;bottom: 0px;"></div>
 </div>
 </body>
 </html>

@@ -59,6 +59,13 @@
 //	return false;
 //});
 var volumeBall = $(".volume-ball");
+var header = $("#player-header");
+var content = $("#player-content");
+var bottom = $("#player-bottom");
+var menu = $("#player-menu");
+var poster = $("#player-poster");
+var playlist = $("#player-playlist");
+var extWindow = Ext.getCmp('music');
 volumeBall.draggable({
 	axis: 'x',
 	containment: 'parent',
@@ -67,6 +74,18 @@ volumeBall.draggable({
 		$(myPlaylist.cssSelector.jPlayer).jPlayer('volume',pct);
 		console.log(ui.position.left);
 	}
+});
+var resizeContent = function(){
+	var contentHeight = extWindow.getHeight()-extWindow.getHeader().getHeight()-header.height()-bottom.height();
+	content.height(contentHeight);
+	var playlistWidth = content.width()-menu.width();
+	playlist.width(playlistWidth);
+}
+extWindow.on('afterlayout',function(){
+	resizeContent();
+});
+extWindow.on('resize',function(){
+	resizeContent();
 });
 var myPlaylist = new jPlayerPlaylist({
 	jPlayer: "#jquery_jplayer",
@@ -128,10 +147,10 @@ var myPlaylist = new jPlayerPlaylist({
 	keyEnabled: true,
 	audioFullScreen: true,
 	play: function(event) {
-		var poster = event.jPlayer.status.media.poster;
+		var posterUrl = event.jPlayer.status.media.poster;
 		var title = event.jPlayer.status.media.title;
 		var artist = event.jPlayer.status.media.artist;
-		$("#jp_poster").attr("src",poster);
+		poster.css("background-image","url('"+posterUrl+"')");
 		$(".detail-title").text(title);
 		$(".detail-artist").text(artist);
 	},

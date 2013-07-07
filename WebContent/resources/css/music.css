@@ -9,7 +9,7 @@
 }
 
 .demo-container ul {
-	list-style-type:none;
+	list-style-type: none;
 	padding:0;
 	margin:1em 0;
 	width:100%;
@@ -21,10 +21,15 @@
 }
 
 .demo-container li {
-	float:left;
 	margin-right:1em;
 }
-
+.demo-container .jp-artist {
+	float: right;
+	width: 30%;
+}
+.demo-container li.jp-playlist-current {
+	background: url("resources/images/desktop/music/left_menu.png");
+}
 .demo-container p span.track-name {
 	color: #CC0090;
 }
