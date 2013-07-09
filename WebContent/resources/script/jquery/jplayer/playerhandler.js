@@ -103,49 +103,6 @@ var myPlaylist = new jPlayerPlaylist({
 	jPlayer: "#jquery_jplayer",
 	cssSelectorAncestor: "#jp_container"
 }, [
-	{
-		title:"Cro Magnon Man",
-		artist:"The Stark Palace",
-		mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
-		oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
-		poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
-	},
-	{
-		title:"Your Face",
-		artist:"The Stark Palace",
-		mp3:"http://www.jplayer.org/audio/mp3/TSP-05-Your_face.mp3",
-		oga:"http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg",
-		poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
-	},
-	{
-		title:"Hidden",
-		artist:"Miaow",
-		free: true,
-		mp3:"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
-		oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
-		poster: "http://www.jplayer.org/audio/poster/Miaow_640x360.png"
-	},
-	{
-		title:"Cyber Sonnet",
-		artist:"The Stark Palace",
-		mp3:"http://www.jplayer.org/audio/mp3/TSP-07-Cybersonnet.mp3",
-		oga:"http://www.jplayer.org/audio/ogg/TSP-07-Cybersonnet.ogg",
-		poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
-	},
-	{
-		title:"Tempered Song",
-		artist:"Miaow",
-		mp3:"http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
-		oga:"http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg",
-		poster: "http://www.jplayer.org/audio/poster/Miaow_640x360.png"
-	},
-	{
-		title:"Lentement",
-		artist:"Miaow",
-		mp3:"http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3",
-		oga:"http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg",
-		poster: "http://www.jplayer.org/audio/poster/Miaow_640x360.png"
-	}
 ], {
 	playlistOptions: {
 		autoPlay: false,
@@ -188,5 +145,26 @@ var myPlaylist = new jPlayerPlaylist({
 		var left = (volumeBall.parent().width()-14)*volumePct;
 		volumeBall.css("left",left);
 		updatePlaylistInfo();
+	}
+});
+$.ajax({
+	type: 'get',
+	dataType: 'json',
+	url: 'music/playlist',
+	success: function(data){
+		var musics = data.music;
+		for(var i=0;i<musics.length;i++) {
+			var music = musics[i];
+			var listItem = new Object();
+			listItem.title = music.title;
+			listItem.artist = music.artist;
+			listItem.mp3 = 'http://192.168.1.100:8080/MusicYao/music/'+music.id+'.mp3';
+			listItem.poster = 'http://192.168.1.100:8080/MusicYao/music/poster/'+music.id;
+			myPlaylist.add(listItem);
+			updatePlaylistInfo();
+		}
+	},
+	error: function(jqXHR,textStatus,errorThrown){
+		alert(errorThrown);
 	}
 });
