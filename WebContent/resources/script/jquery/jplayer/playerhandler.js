@@ -158,8 +158,8 @@ $.ajax({
 			var listItem = new Object();
 			listItem.title = music.title;
 			listItem.artist = music.artist;
-			listItem.mp3 = 'http://192.168.1.100:8080/MusicYao/music/'+music.id+'.mp3';
-			listItem.poster = 'http://192.168.1.100:8080/MusicYao/music/poster/'+music.id;
+			listItem.mp3 = 'http://192.168.1.104:8080/MusicYao/music/'+music.id+'.mp3';
+			listItem.poster = 'http://192.168.1.104:8080/MusicYao/music/poster/'+music.id;
 			myPlaylist.add(listItem);
 			updatePlaylistInfo();
 		}
