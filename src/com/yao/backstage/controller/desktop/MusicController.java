@@ -1,8 +1,5 @@
 package com.yao.backstage.controller.desktop;
 
-import java.util.List;
-
-import javax.ws.rs.GET;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.cxf.jaxrs.client.WebClient;
@@ -17,7 +14,7 @@ public class MusicController {
 	@RequestMapping(value="/playlist",produces={"application/json;charset=UTF-8"},method={RequestMethod.GET})
 	@ResponseBody
 	public String playlist(){
-		String message = WebClient.create("http://localhost:8080").path("/MusicYao/music/random/20").accept(MediaType.APPLICATION_JSON).get(String.class);
+		String message = WebClient.create("http://localhost:8080").path("/MusicYao/music/random/30").accept(MediaType.APPLICATION_JSON).get(String.class);
 		System.out.println(message);
 		return message;
 	}
